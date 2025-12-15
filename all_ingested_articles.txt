@@ -1,0 +1,541 @@
+================================================================================
+ALL INGESTED ARTICLES (171 unique articles)
+================================================================================
+
+Total chunks: 4,425
+Unique articles: 171
+Average chunks per article: 25.9
+
+============================================================
+LOCAL-PDF (6 articles, 238 chunks)
+============================================================
+
+  1. Article 5
+     Year: 2025 | DOI: 10.1056/NEJM0000005 | Chunks: 38
+
+  2. Article 5
+     Year: 2025 | DOI: No DOI | Chunks: 38
+
+  3. Article 4
+     Year: 2024 | DOI: 10.1056/NEJM0000004 | Chunks: 36
+
+  4. Article 4
+     Year: 2024 | DOI: No DOI | Chunks: 36
+
+  5. Article 3
+     Year: 2023 | DOI: No DOI | Chunks: 47
+
+  6. Demo PDF
+     Year: Unknown | DOI: No DOI | Chunks: 43
+
+============================================================
+NEJM-API-CATALYST (5 articles, 113 chunks)
+============================================================
+
+  1. A long-standing organizational commitment to climate change awareness and climate event readiness contributed to the operational efficiency that enabled Moinhos de Vento Hospital in Porto Alegre to remain open during a 3-week stretch of torrential rains and flooding in 2024.
+     Year: 2025 | DOI: 10.1056/CAT.25.0030 | Chunks: 24
+
+  2. Health systems can improve their flexibility by harnessing their clinicians’ skills at dealing with complexity and applying them to administrative challenges.
+     Year: 2025 | DOI: 10.1056/CAT.25.0310 | Chunks: 7
+
+  3. It is not clear that physicians should sell their practices to outside firms; furthermore, it is not clear that buyers do well with the physician practices that they acquire.
+     Year: 2025 | DOI: 10.1056/CAT.25.0121 | Chunks: 40
+
+  4. Standard salary benchmarks and lactation value units to compensate physician parents for the time associated with breastfeeding help to close the gender pay gap and create a more equitable compensation structure for physicians at UC Davis Health’s Department of Pediatrics.
+     Year: 2025 | DOI: 10.1056/CAT.25.0065 | Chunks: 23
+
+  5. The development and scaling of coordn8 offers a replicable model for how health systems of all sizes can develop effective and sustainable solutions that enhance care delivery while supporting staff well-being.
+     Year: 2025 | DOI: 10.1056/CAT.25.0117 | Chunks: 19
+
+============================================================
+NEJM-API-EVIDENCE (5 articles, 162 chunks)
+============================================================
+
+  1. Recent advances in surgical technology have led to increased adoption of minimally invasive pancreatectomy despite limited prospective evidence regarding the safety and efficacy of this approach. Although minimally invasive techniques may offer the potential for earlier recovery, few studies to date have directly compared the perioperative safety of minimally invasive...
+     Year: 2025 | DOI: 10.1056/EVIDe2500224 | Chunks: 7
+
+  2. This nationwide cohort study assessed the risk of ectopic pregnancy within 1 year from the index date among users of levonorgestrel 13.5-mg, 19.5-mg, and 52.5-mg intrauterine devices (IUDs) as compared with copper IUDs. Using data from the French National Healthcare Data System, the study found that the highest-dose hormonal IUD...
+     Year: 2025 | DOI: 10.1056/EVIDoa2500117 | Chunks: 50
+
+  3. This randomized, noninferiority trial comparing minimally invasive pancreatoduodenectomy (MIPD) with open pancreatoduodenectomy (OPD) in patients with resectable pancreatic and periampullary neoplasms demonstrated that MIPD was noninferior to OPD for overall 90-day complications and was associated with modestly faster functional recovery.
+     Year: 2025 | DOI: 10.1056/EVIDoa2500045 | Chunks: 64
+
+  4. This report examines the story of a 19-year-old man who had bilateral vision loss, headaches, nausea, and vomiting. Using questions, physical examination, and testing, an illness script for the presentation emerges. As the clinical course progresses, the differential is refined, a diagnosis is achieved, and a management plan is developed.
+     Year: 2025 | DOI: 10.1056/EVIDmr2500145 | Chunks: 18
+
+  5. Trials typically use the response rate to summarize treatment effects, a metric with limitations for investigating the temporal profile of the effect. In this Clinical Trials Workshop, the authors present a novel approach for analyzing time to response and duration of response in clinical trials.
+     Year: 2025 | DOI: 10.1056/EVIDctw2400349 | Chunks: 23
+
+============================================================
+NEJM-API-NEJM (5 articles, 273 chunks)
+============================================================
+
+  1. <em>To the Editor:</em> In their article, Bent and Dhaliwal (Aug. 21/28 issue)<sup>1</sup> show the use of the abdominojugular reflux test in a patient with heart failure, markedly elevated jugular venous pressure, peripheral edema, and basal crackles and underscore the hemodynamic significance of this test. However, the abdominojugular...
+     Year: 2025 | DOI: 10.1056/NEJMc2514311 | Chunks: 18
+
+  2. After coronary bypass for acute coronary syndrome, adding ticagrelor to aspirin did not reduce cardiovascular events but increased major bleeding at 1 year, as compared with aspirin alone.
+     Year: 2025 | DOI: 10.1056/NEJMoa2508026 | Chunks: 62
+
+  3. In HER2-expressing urothelial cancer, disitamab vedotin plus toripalimab doubled the median progression-free survival, increased the median overall survival, and reduced adverse events as compared with chemotherapy.
+     Year: 2025 | DOI: 10.1056/NEJMoa2511648 | Chunks: 147
+
+  4. NOS host Lisa Rosenbaum and her guests dissect the common notion that the key to improving the primary care system is simply increasing reimbursement.
+     Year: 2025 | DOI: 10.1056/NEJMp2514238 | Chunks: 38
+
+  5. Today, medical research builds up an understanding of the whole from molecular parts, but artificial intelligence can revive an approach building down from patient-level data to theory and understanding.
+     Year: 2025 | DOI: 10.1056/NEJMp2510203 | Chunks: 8
+
+============================================================
+NEJM-API-NEJM-AI (150 articles, 3639 chunks)
+============================================================
+
+  1. A letter about “The Utility of Generative AI in Advancing Global Health.”
+     Year: 2025 | DOI: 10.1056/AIp2500689 | Chunks: 6
+
+  2. A letter to the editor about “AI Agents, Automaticity, and Value Alignment in Health Care.”
+     Year: 2025 | DOI: 10.1056/AIp2500952 | Chunks: 5
+
+  3. A letter to the editor about “AI-Assisted Spirometry Interpretation in Primary Care: A Randomized Controlled Trial.”
+     Year: 2025 | DOI: 10.1056/AIp2500869 | Chunks: 4
+
+  4. A locally deployable, open-source LLM-Anonymizer can remove personal identifiers with high accuracy, offering a scalable and accessible solution for secure medical data processing.
+     Year: 2025 | DOI: 10.1056/AIdbp2400537 | Chunks: 44
+
+  5. A machine learning model that diagnoses celiac disease from duodenal biopsy images demonstrates strong generalizability across multiple hospitals and has the potential to enhance diagnostic efficiency and reliability in clinical practice.
+     Year: 2025 | DOI: 10.1056/AIoa2400738 | Chunks: 45
+
+  6. A national randomized controlled trial tested Therabot, a fine-tuned generative artificial intelligence (AI) chatbot, for mental health treatment in adults with depression, anxiety, or those at clinically high risk for feeding and eating disorders. The study found significant symptom reductions, high rates of user engagement, and a therapeutic alliance comparable...
+     Year: 2025 | DOI: 10.1056/AIoa2400802 | Chunks: 48
+
+  7. A perspective on applying technology to alleviate the current mental health workforce shortage by focusing on the initial stages of mental health treatment for both primary care providers — for whom over 70% of visits involve a mental health component — and mental health professionals.
+     Year: 2025 | DOI: 10.1056/AIp2500045 | Chunks: 16
+
+  8. A rapid quality assurance process with early deployment of an AI-assisted clinical documentation support tool in an integrated delivery system uses multiple workstreams and crowdsourced data to inform decisions regarding continued system deployment, design user training materials, and provide feedback to the vendor.
+     Year: 2025 | DOI: 10.1056/AIcs2400977 | Chunks: 24
+
+  9. A real-world evaluation of an AI triage tool shows promise in improving emergency department efficiency and reducing disparities, highlighting the need for optimizing human–AI integration rather than just model accuracy.
+     Year: 2025 | DOI: 10.1056/AIe2500083 | Chunks: 11
+
+ 10. A recently published randomized controlled trial of a generative AI chatbot for mental health treatment, “Therabot,” requires a response. The authors report reductions in symptoms of depression, anxiety, and feeding and eating disorders, as well as the formation of a therapeutic alliance comparable to outpatient psychotherapy. We identify three methodological...
+     Year: 2025 | DOI: 10.1056/AIp2500390 | Chunks: 8
+
+ 11. A reply to a Letter to the Editor about “The Utility of Generative AI in Advancing Global Health.”
+     Year: 2025 | DOI: 10.1056/AIp2500991 | Chunks: 7
+
+ 12. A response to a letter regarding the original article, “AI Opportunistic Coronary Calcium Screening at Veterans Affairs Hospitals.”
+     Year: 2025 | DOI: 10.1056/AIp2500867 | Chunks: 5
+
+ 13. AI is advancing the practice of medicine and health care delivery worldwide. As global citizens, we must pause to consider the impact of such activity on planetary health given AI’s increasing energy requirements. There is an urgent need to prioritize health system design changes that promote patient-centered care while also...
+     Year: 2025 | DOI: 10.1056/AIp2500154 | Chunks: 21
+
+ 14. Although machine learning has been shown to outperform surrogate decision-makers in predicting patient preferences for cardiopulmonary resuscitation, the authors argue that ML cannot replace surrogates in making these decisions for incapacitated patients.
+     Year: 2025 | DOI: 10.1056/AIe2500879 | Chunks: 9
+
+ 15. An analysis of the evolving landscape of international health AI regulation, comparing approaches in leading industrialized democracies, and highlighting differences in regulating pregenerative versus generative AI, the role of data privacy laws, and the challenges and opportunities for global regulatory harmonization.
+     Year: 2025 | DOI: 10.1056/AIpc2401250 | Chunks: 12
+
+ 16. An evaluation of the foundational model RETFound on an Asian-specific dataset indicates the challenges foundational AI models face in adapting to diverse demographics, emphasizing the need to include more diverse data and collaborate globally on research.
+     Year: 2025 | DOI: 10.1056/AIcs2400497 | Chunks: 17
+
+ 17. An evaluation of the impact of artificial intelligence (AI) on fetal anomaly ultrasound screening by comparing AI-assisted and standard scanning methods in terms of diagnostic accuracy, scan duration, and sonographer cognitive load.
+     Year: 2025 | DOI: 10.1056/AIoa2400747 | Chunks: 48
+
+ 18. An examination of how commercial influences in health care AI — such as decision support manipulation, market concentration, and exploitative practices — reveals risks of misaligning care with patient and societal needs. This perspective advocates for comprehensive oversight and, where appropriate and necessary, regulatory frameworks to protect patient-centered care while...
+     Year: 2025 | DOI: 10.1056/AIp2400922 | Chunks: 7
+
+ 19. Artificial intelligence and machine learning are rapidly reshaping clinical workflows, with validated applications across most fields of medicine. These tools promise greater accuracy and efficiency in both diagnosis and decision-making, as well as access to high-quality care.<sup><sup>1</sup></sup> Yet model development has outpaced critical appraisal — a tension particularly...
+     Year: 2025 | DOI: 10.1056/AIe2500586 | Chunks: 8
+
+ 20. Author’s response to a letter to the editor about “AI Agents, Automaticity, and Value Alignment in Health Care.”
+     Year: 2025 | DOI: 10.1056/AIp2501053 | Chunks: 5
+
+ 21. BiomedCLIP is a fully open-access foundation model that achieves state-of-the-art performance on various biomedical tasks, paving the way for transformative multimodal biomedical discovery and applications.
+     Year: 2025 | DOI: 10.1056/AIoa2400640 | Chunks: 45
+
+ 22. Computational tools can support target trial emulation by facilitating information extraction from unstructured data, supporting data validation, and streamlining statistical analyses. These improvements cannot, on their own, address biases, such as unmeasured confounding, which may be inherent in the process of generating observational data. When that is the case, observational...
+     Year: 2025 | DOI: 10.1056/AIe2500894 | Chunks: 9
+
+ 23. Despite its growing prevalence, chronic liver disease remains underdiagnosed, with notable morbidity and mortality. In this article, an AI algorithm screens for chronic liver diseases in patients undergoing transthoracic echocardiography studies, using standard subcostal images routinely obtained to evaluate the inferior vena cava.
+     Year: 2025 | DOI: 10.1056/AIoa2400948 | Chunks: 33
+
+ 24. ECGFounder is a general-purpose foundation model trained on over 10 million electrocardiograms to support expert-level, multidiagnosis cardiovascular disease detection across single- and multilead ECGs. It demonstrates strong generalization and outperforms baseline models on diverse tasks, enabling scalable, cloud-integrated cardiac monitoring in both clinical and mobile settings.
+     Year: 2025 | DOI: 10.1056/AIoa2401033 | Chunks: 76
+
+ 25. Following the implementation of an AI-informed clinical decision support system on emergency department triage performance and patient flow, there was a significant shift in the acuity distribution of patients, with improved identification of critical care patients, and a reduction in the time from arrival to care, disposition, and departure.
+     Year: 2025 | DOI: 10.1056/AIoa2400296 | Chunks: 51
+
+ 26. Four recommendations for researchers to better evaluate large language models for clinical practice.
+     Year: 2025 | DOI: 10.1056/AIe2500143 | Chunks: 11
+
+ 27. Harshe et al.’s article, “Can a Chatbot Be a Medical Surrogate?”, provides an important contribution in evaluating whether large language models (LLMs) can assist with ethical decision-making. However, a critical dimension is missing: the structure of the question itself.
+     Year: 2025 | DOI: 10.1056/AIp2500625 | Chunks: 4
+
+ 28. Heinz et al. reported that a 4-week generative AI (GenAI) treatment, Therabot, produced clinically significant reductions in depression, anxiety, and eating disorder symptoms after 4 and 8 weeks. The Therabot group was compared with a wait-list control group, a likely nocebo. Comparing Therabot with an attention-equivalent control group — such...
+     Year: 2025 | DOI: 10.1056/AIp2500453 | Chunks: 7
+
+ 29. In a novel clinical application of GPT-4–based translation as a tool for improving confidence and accuracy of patient comprehension of hospital admission events and next steps in disease management, both perceived and objectively measured comprehension scores are higher when patients read plain language discharge summary notes (DSNs) translated by GPT-4...
+     Year: 2025 | DOI: 10.1056/AIoa2400402 | Chunks: 34
+
+ 30. In reviewing the benefits and risks of patients’ use of generative artificial intelligence and policy approaches to increasing trust and containing risks associated with this use, the authors conclude that while government will play a role in helping patients use generative AI effectively, major responsibility will fall to the private...
+     Year: 2025 | DOI: 10.1056/AIpc2400927 | Chunks: 16
+
+ 31. In the Original Article, “An Electrocardiogram Foundation Model Built on Over 10 Million Recordings,” originally published June 26, 2025 (DOI: https://ai.nejm.org/doi/full/10.1056/AIoa2401033), the following paragraph in the sub-section called Training with Real-World Annotations: Noisy, Imbalanced, Positive Unlabeled should read as follows: To enhance the model’s ability to identify potentially...
+     Year: 2025 | DOI: 10.1056/AIx2500913 | Chunks: 21
+
+ 32. In the Policy Corner, “More Fragmented, More Complex: State Regulation of AI in Health Care,” originally published May 5, 2025 (DOI: https://ai.nejm.org/doi/full/10.1056/AIpc2500163), there are multiple changes.
+     Year: 2025 | DOI: 10.1056/AIx2500902 | Chunks: 6
+
+ 33. In the Policy Corner, “More Fragmented, More Complex: State Regulation of AI in Health Care,” originally published May 5, 2025 (DOI: https://ai.nejm.org/doi/full/10.1056/AIpc2500163), two sentences and references need updating.
+     Year: 2025 | DOI: 10.1056/AIx2500570 | Chunks: 3
+
+ 34. In this issue of <em>NEJM AI</em>, Azar et al. demonstrate that AI can accurately extract and enter data from prostatectomy pathology reports. This suggests that AI tools may be accurate enough to be deployed for research, minimizing the burden of manual data extraction and entry.
+     Year: 2025 | DOI: 10.1056/AIe2500388 | Chunks: 8
+
+ 35. In this parallel-group, randomized, controlled superiority trial, the adjunctive use of AI spirometry decision support software significantly improved diagnosis prediction performance. AI decision-support spirometry software has the potential to help address unmet needs in primary care, including suboptimal interpretation of spirometry and the delayed diagnosis of chronic obstructive pulmonary disease...
+     Year: 2025 | DOI: 10.1056/AIoa2400804 | Chunks: 59
+
+ 36. In two landmark randomized controlled trials, Afshar et al. and Lukac et al. collectively evaluate three artificial intelligence scribing products in clinical practice, finding modest time savings for clinicians and reductions in clinician burnout. With their current functionality, AI scribes show early promise for improved productivity, and we lay out...
+     Year: 2025 | DOI: 10.1056/AIe2501051 | Chunks: 10
+
+ 37. Increased state involvement — especially in the absence of strong federal legislation — could either hinder AI development through regulatory fragmentation or encourage self-regulation to meet high standards set by states and international bodies.
+     Year: 2025 | DOI: 10.1056/AIpc2500163 | Chunks: 16
+
+ 38. MedAgentBench, a comprehensive benchmark designed to evaluate the agentic capabilities of large language models in realistic electronic medical record environments, provides a critical foundation for advancing and integrating LLM agents into clinical workflows.
+     Year: 2025 | DOI: 10.1056/AIdbp2500144 | Chunks: 34
+
+ 39. One key decision for regulatory bodies is whether to require app makers to disclose the use of generative AI-powered chatbots in their products. The authors suggest that some generative AI-based chatbots lead consumers to use chatbots in unintended ways that make consumers contextually vulnerable, and they discuss how managers and...
+     Year: 2025 | DOI: 10.1056/AIpc2400464 | Chunks: 20
+
+ 40. Our study demonstrates a potential for AI-driven acceleration of scientific discovery in biomedical research and beyond, while enhancing, rather than jeopardizing, traceability, transparency, and verifiability.
+     Year: 2025 | DOI: 10.1056/AIoa2400555 | Chunks: 36
+
+ 41. PadChest Grounded Reporting is a novel dataset derived from PadChest and designed to train and evaluate grounded report generation models from chest x-ray images. PadChest-GR includes comprehensive sentence-level bounding-box annotations for all clinically relevant findings in each image, as judged by expert radiologists.
+     Year: 2025 | DOI: 10.1056/AIdbp2401120 | Chunks: 33
+
+ 42. Real-time message routing using an NLP model was associated with reduced message response and resolution times and fewer overall message interactions among clinic staff.
+     Year: 2025 | DOI: 10.1056/AIoa2400354 | Chunks: 31
+
+ 43. Response to the Comment on “AI-Assisted Spirometry Interpretation in Primary Care: A Randomized Controlled Trial.”
+     Year: 2025 | DOI: 10.1056/AIp2500995 | Chunks: 12
+
+ 44. Since the passage of the HITECH Act in 2009, electronic health records (EHRs) have become an examination of the potential of AI-driven tools, including machine learning classifiers and large language models, to streamline EHR workflows for providers and outline a path for effective implementation and impact.
+     Year: 2025 | DOI: 10.1056/AIe2500020 | Chunks: 11
+
+ 45. The Clinical Behavioral Atlas, a pioneering computer vision system tailored for the intensive care unit setting, is capable of automatically detecting a broad range of clinically relevant activities, objects, and personnel categories through RGB video data, making strides in ICU observational research.
+     Year: 2025 | DOI: 10.1056/AIoa2400590 | Chunks: 64
+
+ 46. The Development, Evaluation, and Assessment of Large Language Models (DEAL) checklist offers two pathways — DEAL-A for advanced model development and DEAL-B for applied research — to ensure comprehensive and consistent reporting of LLM studies, fostering reliable scientific communication and evaluation.
+     Year: 2025 | DOI: 10.1056/AIp2401106 | Chunks: 19
+
+ 47. The Original Article, “Four-Channel ECG as a Single Source for Early Diagnosis of Cardiac Hypertrophy and Dilation — A Deep Learning Approach,” originally published September 26, 2024 (DOI: https://doi.org/10.1056/AIoa2300297 ), included a wrong label in Panel B of Figure 6, The Aggregated Attribution Score of Each Lead: (Panel A)...
+     Year: 2025 | DOI: 10.1056/AIx2401111 | Chunks: 3
+
+ 48. The UC San Diego Health system examines the ethical and practical implications of using generative artificial intelligence (AI) to assist in drafting messages to patients through an approach that prioritizes transparency by disclosing AI involvement in clinical communication and calls for national guidelines to ensure consistent and trustworthy use of...
+     Year: 2025 | DOI: 10.1056/AIp2401167 | Chunks: 7
+
+ 49. The authors appreciate the thoughtful responses provided by Heckman et al. and Gratch and Essig regarding their recent publication evaluating the generative AI chatbot, Therabot.
+     Year: 2025 | DOI: 10.1056/AIp2500680 | Chunks: 11
+
+ 50. The authors emphasize the emerging potential of LLMs to promote health equity by highlighting three promising use cases: detecting human biases (e.g., from clinical notes); creating structured equity-relevant databases from unstructured text; and improving equity of access to health information.
+     Year: 2025 | DOI: 10.1056/AIp2400889 | Chunks: 15
+
+ 51. The authors of the article appreciate the interest and engagement shown by Kenjiro Shiraishi regarding their article, “Can a Chatbot Be a Medical Surrogate?” and thank them for their thoughtful comments and the opportunity to further expand on the original article author’s aims and findings.
+     Year: 2025 | DOI: 10.1056/AIp2500703 | Chunks: 4
+
+ 52. The authors propose further study on the use of LLMs to generate clinical documentation and communication, looking in particular at the net benefit on efficiency and cognitive burden when the physician’s efforts are shifted from generating new content to reviewing content created by LLMs.
+     Year: 2025 | DOI: 10.1056/AIp2400979 | Chunks: 8
+
+ 53. The rapid advances in health care AI necessitate a fundamental shift in how we evaluate these systems. The authors propose Humanity’s Next Medical Exam, a reenvisioned framework to challenge, measure, and promote appropriate, human-aligned AI experiential learning that is able to keep pace with evolving systems.
+     Year: 2025 | DOI: 10.1056/AIe2501008 | Chunks: 15
+
+ 54. The results of the Case Study, <em>“How Generalizable Are Foundation Models When Applied to Different Demographic Groups and Settings?”</em> originally published December 18, 2024 (DOI: https://ai.nejm.org/doi/full/10.1056/AIcs2400497), has been corrected.
+     Year: 2025 | DOI: 10.1056/AIx2500261 | Chunks: 3
+
+ 55. This Perspective article summarizes an <em>NEJM AI</em> Grand Rounds conversation with Dr. Vijay Pande, General Partner at Andreessen Horowitz. The cohosts and guest discuss the intersection of artificial intelligence, venture capital, and health care, as well as the potential for AI to democratize access to high-quality health care.
+     Year: 2025 | DOI: 10.1056/AIp2401103 | Chunks: 7
+
+ 56. This article analyzes how current reimbursement mechanisms hinder the adoption of clinically effective and regulated artificial intelligence tools in health care, despite rapid technological progress. It examines current payment barriers, proposes policy reforms to align economic incentives with innovation, and outlines emerging challenges and opportunities in the regulation of generative...
+     Year: 2025 | DOI: 10.1056/AIpc2500871 | Chunks: 33
+
+ 57. This article analyzes the Trump administration’s July 2025 executive orders and accompanying action plan on AI, highlighting their potential effects on health care research, innovation, and clinical practice in the United States and globally. Although the policies aim to accelerate AI deployment and reduce regulatory barriers, the authors note significant...
+     Year: 2025 | DOI: 10.1056/AIpc2500892 | Chunks: 11
+
+ 58. This article details a robust, diagnostic test accuracy study, comparing an AI-guided ultrasound tool (AutoDVT) with standard compression ultrasound in 414 patients at 11 centers in the UK, using a double-blind study design.
+     Year: 2025 | DOI: 10.1056/AIoa2400741 | Chunks: 40
+
+ 59. This article examines how the use of artificial intelligence (AI) in radiology influences public perceptions of liability when a radiologist misses a pathology. Participants were more likely to hold the radiologist accountable when AI detected the abnormality, but providing information about AI error rates reduced this effect, highlighting the potential...
+     Year: 2025 | DOI: 10.1056/AIoa2400785 | Chunks: 21
+
+ 60. This article introduces an AI-based screening tool for Parkinson’s disease (PD) that analyzes facial expressions — particularly smiles — in short video recordings. Trained on the largest known dataset of its kind, the model demonstrated strong accuracy in identifying PD across diverse populations and settings, highlighting its potential for scalable,...
+     Year: 2025 | DOI: 10.1056/AIoa2400950 | Chunks: 55
+
+ 61. This article introduces the Melanoma Research Alliance Multimodal Image Dataset for Artificial Intelligence–Based Skin Cancer (MIDAS), the largest publicly available dataset of biopsy-confirmed skin lesions with paired clinical and dermoscopic images. Using MIDAS, the authors evaluate the diagnostic performance of leading AI models and compare them with dermatologists’ diagnoses, highlighting...
+     Year: 2025 | DOI: 10.1056/AIdbp2400732 | Chunks: 53
+
+ 62. This article presents AI-CAC, a deep learning algorithm developed to automatically quantify coronary artery calcium (CAC) from nongated, noncontrast chest computed tomography scans across the U.S. Veterans Affairs health care system. Validated against clinical electrocardiogram-gated CAC scoring, the model demonstrated high accuracy and prognostic value, enabling opportunistic cardiovascular risk assessment...
+     Year: 2025 | DOI: 10.1056/AIoa2400937 | Chunks: 32
+
+ 63. This article presents a comprehensive analysis of how artificial intelligence–generated medical responses are perceived and evaluated by nonexperts. The results show that the accuracy of AI-generated responses, on average, was perceived as similar to or even better than the responses provided by doctors. Consequently, this could potentially lead to dependence...
+     Year: 2025 | DOI: 10.1056/AIoa2300015 | Chunks: 47
+
+ 64. This article presents a critical review of the design and performance of AI monitoring systems in clinical settings, highlighting the lack of consensus and transparency in current practices. It introduces a structured road map to guide the development of effective and practical monitoring systems.
+     Year: 2025 | DOI: 10.1056/AIra2400657 | Chunks: 53
+
+ 65. This article presents the Digital Ruler of Strabismus (DRS), a smartphone-based system for precise and automated strabismus measurement. DRS showed strong agreement with the prism and alternate cover test, offering an accessible, cost-effective solution for early detection, dynamic monitoring, and long-term management of strabismus, particularly in resource-limited settings.
+     Year: 2025 | DOI: 10.1056/AIoa2401205 | Chunks: 33
+
+ 66. This article presents the development and silent prospective validation of Smart Match, a machine-learning system designed to predict patient-specific perioperative blood transfusion needs. It describes how data-driven modeling can replace traditional procedure-based blood ordering schedules, enabling more personalized and efficient approaches to perioperative blood management.
+     Year: 2025 | DOI: 10.1056/AIoa2401198 | Chunks: 52
+
+ 67. This article summarizes key themes from the U.S. Food and Drug Administration’s 2024 public workshop on Artificial Intelligence in Drug and Biological Product Development, held in collaboration with the Clinical Trial Transformation Initiative. It outlines emerging challenges and policy priorities — spanning data access, model transparency, regulatory clarity, and cross-sector...
+     Year: 2025 | DOI: 10.1056/AIpc2500801 | Chunks: 13
+
+ 68. This case study evaluates the Automated Processing of the Physiological Registry for Assessment of Injury Severity — Hemorrhage Risk Index, an AI-enabled clinical decision support tool trained on vital signs of trauma patients to stratify hemorrhage risk into three levels. Independent validation using data from nearly 6000 patients demonstrated strong...
+     Year: 2025 | DOI: 10.1056/AIcs2401170 | Chunks: 41
+
+ 69. This case study evaluates the ability of six frontier large language models — including GPT-4o, Gemini 1.5 Pro, and Llama 3.1 — to incorporate newly updated medical knowledge through commercial fine-tuning application programming interfaces. Despite modest gains, most models struggled to generalize updated information, with GPT-4o mini showing the best...
+     Year: 2025 | DOI: 10.1056/AIcs2401155 | Chunks: 20
+
+ 70. This case study investigates how handwritten labels and watermarks on histopathological images can unintentionally act as prompt injections, misleading state-of-the-art vision–language models such as GPT-4o and Claude. The findings reveal that these models often treat such visual text as authoritative, resulting in inaccurate outputs that highlight a critical vulnerability in...
+     Year: 2025 | DOI: 10.1056/AIcs2500078 | Chunks: 38
+
+ 71. This commentary examines the shortcomings of Canada’s proposed Artificial Intelligence and Data Act, in particular its failure to adequately provide regulatory guidance for health care AI. It argues for a more targeted, sector-specific approach to ensure patient safety, transparency, and responsible innovation in future AI legislation.
+     Year: 2025 | DOI: 10.1056/AIpc2500153 | Chunks: 18
+
+ 72. This editorial contextualizes the article by Ruth et al. within the broader emerging ecosystem of movement as a biomarker and describes how hurdles to real-world use are now transitioning from technological to operational.
+     Year: 2025 | DOI: 10.1056/AIe2500682 | Chunks: 7
+
+ 73. This editorial discusses a novel study by Ruth et al. that demonstrates that AI-enabled video biomechanical analysis can capture subtle movement impairments in individuals with facioscapulohumeral muscular dystrophy and myotonic dystrophy — differences that conventional outcome measures may fail to detect. By extracting clinically relevant kinematic features from video recordings,...
+     Year: 2025 | DOI: 10.1056/AIe2500660 | Chunks: 7
+
+ 74. This editorial discusses the contributions and limitations of artificial intelligence–assisted automation of fetal anomaly ultrasound scanning.
+     Year: 2025 | DOI: 10.1056/AIe2500129 | Chunks: 10
+
+ 75. This editorial examines the use of generative AI to simulate patient encounters for students preparing for the Objective Structured Clinical Examination, highlighting both its pedagogical promise and potential risks. We argue for thoughtful integration that supports diagnostic reasoning, active learning, and educational equity — ensuring AI augments rather than replaces...
+     Year: 2025 | DOI: 10.1056/AIe2500527 | Chunks: 9
+
+ 76. This editorial explores whether TRIALSCOPE, or similar applications, could generate sufficient high quality clinical evidence such that new treatments could be released for widespread use after small, controlled trials.
+     Year: 2025 | DOI: 10.1056/AIe2500877 | Chunks: 5
+
+ 77. This issue of <em>NEJM AI</em> features the first two articles published through our accelerated human+AI review process. In this editorial, we describe the invitation-only “Fast Track” process used to review these studies, both of which are randomized controlled trials of ambient AI scribes. We emphasize the central role...
+     Year: 2025 | DOI: 10.1056/AIe2501175 | Chunks: 11
+
+ 78. This letter proposes extending the AI-driven opportunistic screening model for coronary calcium from noncontrast chest computed tomography scans to noncontrast head CTs, aiming to predict stroke risk through automated detection and quantification of intracranial arterial calcification.
+     Year: 2025 | DOI: 10.1056/AIp2500709 | Chunks: 4
+
+ 79. This letter reflects on the editorial “Humanity’s Next Medical Exam” and highlights the need for AI systems that restore physician presence and align technology with human values. It argues that doctors who code must focus on the 60% of clinical work lost to inefficiency and administrative burden.
+     Year: 2025 | DOI: 10.1056/AIp2501185 | Chunks: 4
+
+ 80. This letter to the editor highlights the need for further research into the cost-effectiveness, real-world impact on patient outcomes, and broader public health value of computer-aided diagnosis tools for tuberculosis.
+     Year: 2025 | DOI: 10.1056/AIp2401190 | Chunks: 10
+
+ 81. This paper discusses the challenges of postdeployment assessment of predictive artificial intelligence (AI) models in health care, particularly how confounding medical interventions can distort performance evaluation. It explores current limitations in monitoring strategies and suggests advanced causal modeling as a potential solution to ensure that AI models remain effective in...
+     Year: 2025 | DOI: 10.1056/AIp2401116 | Chunks: 11
+
+ 82. This perspective argues that the term “AI hallucination” is a misnomer, contending that large language model errors more closely resemble “confabulation” — active, fabricated outputs — than hallucination, which implies conscious perception.
+     Year: 2025 | DOI: 10.1056/AIp2500785 | Chunks: 6
+
+ 83. This perspective draws parallels between artificial intelligence (AI) regulation and competency-based medical education (CBME), an existing framework that addresses similar complexities in training human clinicians. The authors propose a CBME framework as a life-cycle approach to regulating AI in health care that offers a dynamic, continuous, and outcomes-based regulatory model...
+     Year: 2025 | DOI: 10.1056/AIp2401059 | Chunks: 17
+
+ 84. This perspective examines the ongoing challenges in integrating artificial intelligence into health care, emphasizing the persistent issues of algorithmic bias, privacy concerns, and the necessity for rigorous validation. It highlights the balance between automation and human oversight, particularly in ethical decision-making and informed consent processes.
+     Year: 2025 | DOI: 10.1056/AIp2500005 | Chunks: 12
+
+ 85. This perspective examines the unique challenges of drug development for rare, ultrarare, and hyper-rare diseases, including small and geographically dispersed patient populations, limited natural history data, and clinical heterogeneity. It highlights strategies to address these obstacles with the advent of artificial intelligence, such as advanced analytical methods, use of individual-level...
+     Year: 2025 | DOI: 10.1056/AIp2500802 | Chunks: 11
+
+ 86. This perspective explains how the unique nature of primary care translates to important differences in machine learning model development and adoption for clinical use. Four key considerations are presented to address the use of ML in primary care settings.
+     Year: 2025 | DOI: 10.1056/AIp2401122 | Chunks: 14
+
+ 87. This perspective explores 10 strategies for how artificial intelligence can be thoughtfully integrated into HIV programs amid tightening global health resources. It offers actionable guidance to ensure these tools reinforce — rather than disrupt — community priorities, ethical standards, and sustainable care delivery in high-need settings.
+     Year: 2025 | DOI: 10.1056/AIp2500023 | Chunks: 12
+
+ 88. This perspective explores Lewis Thomas’s reflections on artificial intelligence (AI), highlighting his concerns about AI’s limitations and its inability to replicate human creativity, moral agency, and the capacity for error-driven discovery. It examines the evolving role of AI in knowledge production and the enduring value of human effort in shaping...
+     Year: 2025 | DOI: 10.1056/AIp2401252 | Chunks: 6
+
+ 89. This perspective explores the capabilities of five large language models (ChatGPT-4o mini, Claude 3.5 Sonnet, Copilot for Microsoft 365, Meta AI Llama 3, and Gemini 1.5 Flash) to respond to ethics scenarios that may emerge when AI is used in health care, and finds that though AI can be used...
+     Year: 2025 | DOI: 10.1056/AIp2401257 | Chunks: 8
+
+ 90. This perspective explores the emerging role of causal machine learning in precision oncology, highlighting its potential to improve individualized treatment decisions by estimating patient-specific treatment effects. It contrasts causal ML with traditional predictive ML, illustrating how causal inference can leverage multimodal data to address variability in treatment response, support drug...
+     Year: 2025 | DOI: 10.1056/AIp2500277 | Chunks: 18
+
+ 91. This perspective explores the shortcomings of traditional auditing methods for large language models in health care and offers targeted recommendations to enhance bias evaluation in practical, real-world settings.
+     Year: 2025 | DOI: 10.1056/AIp2500015 | Chunks: 46
+
+ 92. This perspective frames AI agents as a transformative advancement in health care AI, offering unprecedented capabilities but raising complex ethical challenges. It calls for an ethical framework based on inclusivity, transparency, and adaptive governance to ensure value alignment and promote equity, quality, and trust in care.
+     Year: 2025 | DOI: 10.1056/AIp2401165 | Chunks: 18
+
+ 93. This perspective highlights first-year medical students’ emotional and educational responses to training alongside an ambient AI scribe during standardized patient interviews. Reflecting on their initial sense of competition with the AI, the authors explore how this tension ultimately fostered professional growth and a deeper understanding of how human skills can...
+     Year: 2025 | DOI: 10.1056/AIp2500260 | Chunks: 7
+
+ 94. This perspective highlights the significant potential of artificial intelligence to advance Diabetes Precision Health by enabling more personalized approaches to prevention, diagnosis, treatment, and prognosis. It summarizes key challenges and actionable strategies identified by experts convened by the National Institute of Diabetes and Digestive and Kidney Diseases to accelerate progress...
+     Year: 2025 | DOI: 10.1056/AIp2500475 | Chunks: 12
+
+ 95. This perspective highlights the urgent need for consistent oversight of predictive artificial intelligence models in health care. It proposes short-term randomized deployment as a practical standard to ensure institutional accountability, safety, and equity in AI implementation.
+     Year: 2025 | DOI: 10.1056/AIp2500705 | Chunks: 12
+
+ 96. This perspective not only addresses the transformative potential of generative artificial intelligence in advancing global health, particularly in low- and middle-income countries, but proposes actionable solutions to overcome the associated challenges and ethical dilemmas.
+     Year: 2025 | DOI: 10.1056/AIp2400875 | Chunks: 12
+
+ 97. This perspective piece explores the intersection of clinical reasoning and artificial intelligence through the author’s firsthand experience of competing against Generative Pretrained Transformer 4 in a live diagnostic forum at Harvard Medical Grand Rounds. Although GPT-4 demonstrated impressive diagnostic acumen, the author argues that clinical diagnosis remains deeply embedded in...
+     Year: 2025 | DOI: 10.1056/AIp2500439 | Chunks: 8
+
+ 98. This perspective provides data on the landscape of medical AI in China, covering research focus areas, key players from academia and industry, and the main drivers of medical AI development, as well as insights into these trends relative to those seen in the United States.
+     Year: 2025 | DOI: 10.1056/AIp2401234 | Chunks: 19
+
+ 99. This perspective reviews insights from the 2025 Symposium on AI for Learning Health Systems, examining how AI tools have moved from pilot studies to widespread use in clinical care. It highlights six key domains — including documentation, decision support, insurance, clinician–AI interaction, economics, and regulation — showing both meaningful benefits...
+     Year: 2025 | DOI: 10.1056/AIp2500788 | Chunks: 21
+
+100. This perspective seeks to indicate how the lack of security in AI platforms may increase risk in clinical settings, particularly when these tools are used for translation or when patients share sensitive information about immigration status, employment, or housing.
+     Year: 2025 | DOI: 10.1056/AIp2500960 | Chunks: 10
+
+101. This perspective summarizes the U.S. National Academy of Medicine’s AI Code of Conduct special publication, highlighting the critical need to establish shared guardrails to ensure the best health outcomes for the public. The publication seeks to provide principles, commitments, and essential guidance for considerations in the use of health AI.
+     Year: 2025 | DOI: 10.1056/AIp2500651 | Chunks: 10
+
+102. This policy commentary explores the transformative role of artificial intelligence (AI) in virtual front doors, which serve as the initial consumer interface in health systems. It highlights how AI is enabling more personalized, equitable, and efficient care triage in Australia, advancing the goal of delivering the right care, in the...
+     Year: 2025 | DOI: 10.1056/AIpc2401260 | Chunks: 35
+
+103. This randomized, pragmatic trial evaluated the performance of two large language model-powered ambient AI scribes (Microsoft DAX Copilot and Nabla) on a sample of 238 outpatient physicians across 14 specialties, measuring documentation time, physician burnout, cognitive task load, and work exhaustion. Nabla modestly reduced the time spent writing notes, while...
+     Year: 2025 | DOI: 10.1056/AIoa2501000 | Chunks: 54
+
+104. This review analyzes 950 U.S. Food and Drug Administration–regulated artificial intelligence medical devices, revealing stark contrasts between public and private manufacturers in production scale, transparency, and recall rates. It highlights how commercialization strategies and firm characteristics influence device performance and regulatory outcomes, emphasizing areas needing greater oversight.
+     Year: 2025 | DOI: 10.1056/AIra2500061 | Chunks: 26
+
+105. This review article explores and evaluates the opportunities in using retrieval augmented generation (RAG) to overcome existing LLM limitations when used within the health care and pharmaceutical domain. It provides a framework of how RAG works and describes its strengths and weaknesses when applied to the field of medicine.
+     Year: 2025 | DOI: 10.1056/AIra2400380 | Chunks: 32
+
+106. This review examines how artificial intelligence and machine learning could transform neurocritical care by enabling real-time detection of secondary brain injury. Drawing on three illustrative cases, it demonstrates how AI-assisted monitoring might enhance decision-making for delayed cerebral ischemia, seizure detection, and physiologic trend analysis while outlining the challenges of safely...
+     Year: 2025 | DOI: 10.1056/AIra2500585 | Chunks: 43
+
+107. This review examines the evolving role of artificial intelligence (AI) in oncology, particularly in radiology and pathology, and treatment selection using large language models. It highlights key challenges — such as data quality, model validation, and clinical integration — and proposes strategies to overcome them to support the effective adoption...
+     Year: 2025 | DOI: 10.1056/AIra2401164 | Chunks: 31
+
+108. This review summarizes the current state of the art in network medicine and artificial intelligence as a combined approach to the analysis of complex biomedical systems governing disease. Use of this unique and highly effective analytical strategy provides a path to precision medicine.
+     Year: 2025 | DOI: 10.1056/AIra2401229 | Chunks: 43
+
+109. This study demonstrates that smartphone video–based biomechanical analysis can accurately replicate traditional timed function tests — commonly used to diagnose and assess movement-related conditions such as neuromuscular disorders — while also capturing disease-specific movement patterns that timed function tests fail to detect. By enabling sensitive and interpretable assessments in clinical...
+     Year: 2025 | DOI: 10.1056/AIoa2401137 | Chunks: 40
+
+110. This study describes the development and application of a self-supervised deep-learning approach called temporal learning for analyzing longitudinal medical imaging. It demonstrates that temporal learning improves longitudinal, imaging-based recurrence prediction in pediatric gliomas, and that performance increases incrementally with the number of historical scans available to the algorithm.
+     Year: 2025 | DOI: 10.1056/AIoa2400703 | Chunks: 39
+
+111. This study evaluates the AI-Standardized Clinical Examination framework, which leverages text-based simulations with virtual patients and AI-driven assessment. Through a single-blind randomized trial, it assesses the impact of ASCE training on objective structured clinical examination scores, perceived realism of the simulations, absenteeism, and emotional readiness for the OSCE compared with...
+     Year: 2025 | DOI: 10.1056/AIoa2500066 | Chunks: 36
+
+112. This study evaluates the CathEF deep-learning algorithm, which estimates left ventricular ejection fraction directly from routine left coronary angiograms in acute coronary syndrome patients, eliminating the need for additional contrast or catheterization. The study found that CathEF achieved diagnostic performance comparable to ventriculography, although its accuracy was lower in patients...
+     Year: 2025 | DOI: 10.1056/AIcs2401008 | Chunks: 59
+
+113. This study evaluates the accuracy of the National Institutes of Health Integrated Data Analysis Platform Text Extraction Program, a Generative Pretrained Transformer 4–powered tool for extracting data from unstructured electronic health records. Compared with a manually curated ground-truth dataset from radical prostatectomy pathology reports, the Text Extraction Program achieved 99.8%...
+     Year: 2025 | DOI: 10.1056/AIcs2400943 | Chunks: 27
+
+114. This study evaluates the performance of Articulate Medical Intelligence Explorer, a conversational AI system for diagnostic support in breast oncology, using 60 synthetic patient vignettes without domain-specific fine-tuning. Although AMIE outperformed internal medicine trainees and oncology fellows, it underperformed compared with attending oncologists, highlighting both its potential and the need...
+     Year: 2025 | DOI: 10.1056/AIcs2500025 | Chunks: 62
+
+115. This study examines the vulnerability of large-scale language models (LLMs) tuned to medical data to adversarial attacks. The study shows that such models can expose sensitive patient information. The results demonstrate the effectiveness of prompt-based attacks in compromising privacy, and underscore the critical need for enhanced defenses in the training...
+     Year: 2025 | DOI: 10.1056/AIcs2400390 | Chunks: 28
+
+116. This study explores how artificial intelligence models with retrieval-augmented generation compare with humans in emergency department diagnostic coding accuracy and specificity. It demonstrates that even smaller AI models perform favorably when using RAG, which suggests the potential for reducing administrative burden in health care, increasing coding efficiency, and improving clinical...
+     Year: 2025 | DOI: 10.1056/AIcs2401161 | Chunks: 31
+
+117. This study finds that an out-of-the-box risk classification by a U.S. Food and Drug Administration–cleared artificial intelligence–enabled algorithm for identifying hypertrophic cardiomyopathy from electrocardiograms can have a low predictive value when used for diagnosis in a screened population. Calibrated model scores approximate the probability of disease among those flagged and...
+     Year: 2025 | DOI: 10.1056/AIoa2400421 | Chunks: 40
+
+118. This study introduces SpikeNet2, a deep-learning model that has been shown to achieve expert-level performance in detecting epileptiform discharges from electroencephalogram recordings while significantly reducing false positives. By combining event-level and EEG-level classification, SpikeNet2 demonstrates strong generalizability across diverse datasets, making it a promising tool for clinical and telemedicine applications.
+     Year: 2025 | DOI: 10.1056/AIoa2401221 | Chunks: 49
+
+119. This study introduces a publicly available script concordance test benchmark that reveals important limitations in the clinical reasoning capabilities of leading large language models, particularly in processing new information under uncertainty.
+     Year: 2025 | DOI: 10.1056/AIdbp2500120 | Chunks: 39
+
+120. This study introduces a self-supervised electrocardiogram transformer foundation model that achieves high diagnostic accuracy across multiple cardiac prediction tasks. By enabling robust performance with limited labeled data, the approach expands AI’s potential in complex diagnostic areas such as myocardial ischemia and coronary microvascular and vasomotor dysfunction.
+     Year: 2025 | DOI: 10.1056/AIoa2500164 | Chunks: 80
+
+121. This study introduces and evaluates TRIALSCOPE, a computational framework designed to extract robust real-world evidence from unstructured electronic medical records at scale. When applied to over 1 million cancer patient records, the framework structured free text automatically, reduced confounding through causal inference techniques, and enabled the simulation of clinical trials...
+     Year: 2025 | DOI: 10.1056/AIoa2400859 | Chunks: 49
+
+122. This study investigates the real-world impact of a generative artificial intelligence scribe on health care practitioners’ well-being and documentation workload in ambulatory care. Using a 24-week, stepped-wedge, randomized trial, the authors demonstrate that ambient AI can meaningfully reduce burnout and time spent on notes without compromising documentation quality or billing...
+     Year: 2025 | DOI: 10.1056/AIoa2500945 | Chunks: 70
+
+123. This study presents a comprehensive framework and protocols for safely integrating ambient artificial intelligence (AI) into routine clinical care, focusing on electronic health record (EHR) integration, governance, and real-time monitoring of AI-driven clinical note documentation. The approach includes human factors such as engineering, compliance audits, and a pragmatic randomized trial...
+     Year: 2025 | DOI: 10.1056/AIdbp2401267 | Chunks: 36
+
+124. This study presents the first proof of concept for a machine learning–based patient preference predictor, designed to improve the accuracy of decision-making for incapacitated patients. Using data from over 1800 Swiss adults, the patient preference predictor outperformed human surrogates in predicting cardiopulmonary resuscitation preferences, demonstrating its potential to support more...
+     Year: 2025 | DOI: 10.1056/AIoa2500265 | Chunks: 46
+
+125. To move forward as a field, benchmarks need to be designed that better align with the tasks these models are expected to perform upon deployment.
+     Year: 2025 | DOI: 10.1056/AIe2401235 | Chunks: 9
+
+126. Unpacking an important application of model calibration for an out-of-the-box artificial intelligence algorithm used to flag patients who are at high risk for hypertrophic cardiomyopathy, this article explains the use of calibrated scores for patient-level decision-making.
+     Year: 2025 | DOI: 10.1056/AIe2500297 | Chunks: 6
+
+127. Viz Assist, a generative AI clinical copilot from Viz.ai, builds on the company’s proven imaging-based solutions.
+     Year: 2025 | DOI: 10.1056/AI-S2501083 | Chunks: 7
+
+128. We argue that in developing and evaluating AI tools for medical diagnostics, rather than focusing on fairness criteria that quantify disparities between protected subpopulations, our first and most important objective should be to track and maximize diagnostic accuracy for all subpopulations.
+     Year: 2025 | DOI: 10.1056/AIp2400672 | Chunks: 7
+
+129. We investigate the accuracy, efficiency, and interpretability of using large language models for clinical trial patient matching. While prior work has focused mostly on fine-tuning and few-shot prompting, we are specifically interested in scalable approaches with an eye toward real-world deployment, and thus our study focuses on the zero-shot performance...
+     Year: 2025 | DOI: 10.1056/AIcs2400360 | Chunks: 30
+
+130. We may be entering an era of specialist–generalist medical AI paradox.
+     Year: 2025 | DOI: 10.1056/AIe2500529 | Chunks: 8
+
+131. We recommend the development of clearer guidelines and ethical standards for the use of artificial intelligence (AI) in research, fostering human-AI collaboration to enhance research quality while preserving human oversight and integrating the innovative “data-chaining” transparency mechanisms more broadly to support reproducibility and traceability.
+     Year: 2025 | DOI: 10.1056/AIe2401073 | Chunks: 8
+
+132. We set out recommendations enabling those creating and/or using health care datasets to identify and transparently acknowledge underlying biases.
+     Year: 2025 | DOI: 10.1056/AIp2401088 | Chunks: 85
+
+133. A deep anomaly detection approach for histopathology shows high detection performance for a broad range of diseases (including all cancers) within the long diagnostic tail in gastrointestinal biopsies.
+     Year: 2024 | DOI: 10.1056/AIoa2400468 | Chunks: 39
+
+134. A new foundation model for ophthalmic images demonstrates important progress, particularly through its flexible approach to multimodal training and its application to image segmentation tasks.
+     Year: 2024 | DOI: 10.1056/AIe2401024 | Chunks: 7
+
+135. A perspective on how the major requirements of the European Union’s AI Act may impact the work of physicians and medical innovators in the United States over the next few years.
+     Year: 2024 | DOI: 10.1056/AIp2400449 | Chunks: 9
+
+136. A proposal for an AI foundation model for ophthalmology that can process eight ophthalmic imaging modalities and adapt to a multitude of ophthalmic scenarios and applications.
+     Year: 2024 | DOI: 10.1056/AIoa2300221 | Chunks: 61
+
+137. A structured approach for leveraging advances in generative artificial intelligence to improve the quality of causal analyses using real-world health data.
+     Year: 2024 | DOI: 10.1056/AIp2400727 | Chunks: 9
+
+138. AI will generally have an indirect impact on patient outcomes, presenting challenges with respect to statistical power for clinical outcomes.
+     Year: 2024 | DOI: 10.1056/AIe2400881 | Chunks: 6
+
+139. An examination of the inherent experiential gap between researchers and their participants by viewing the problem through the lens of a popular thought experiment involving the perception of color.
+     Year: 2024 | DOI: 10.1056/AIp2400567 | Chunks: 8
+
+140. Artificial intelligence models sometimes propagate racial and gender bias. This study shows that human-like cognitive biases are prevalent in generative artificial intelligence and sometimes much more so than among practicing clinicians.
+     Year: 2024 | DOI: 10.1056/AIcs2400639 | Chunks: 40
+
+141. Drawing on the experience of the first-ever artificial intelligence software-as-a-medical-device solution successfully approved by regulators and implemented at a country-wide health care system level, this case study discusses a sequential roadmap of lessons learnt in overcoming practical challenges to facilitate the planning of the successful development, adoption, and diffusion of...
+     Year: 2024 | DOI: 10.1056/AIcs2400404 | Chunks: 26
+
+142. Hospital quality measures are a vital component of a learning health system, yet they remain costly to report, can be statistically underpowered, and suffer from poor interrater reliability. Here, we demonstrate that large language models with interoperable electronic health record data can perform abstractions for complex quality measures that are...
+     Year: 2024 | DOI: 10.1056/AIcs2400420 | Chunks: 32
+
+143. Sepsis is a life-threatening acute condition that requires accurate and rapid identification to guide proper treatment. This study outlines the development and validation of the first U.S. Food and Drug Administration–authorized artificial intelligence–based software to identify patients at risk of having sepsis.
+     Year: 2024 | DOI: 10.1056/AIoa2400867 | Chunks: 66
+
+144. This case study gives an evaluation of the ability of potentially powerful computational tools available to the drug development community to harmonize real-world oncology data as the foundation for scalable drug development informatics pipelines.
+     Year: 2024 | DOI: 10.1056/AIcs2400661 | Chunks: 27
+
+145. This commentary discusses the presence of cognitive biases in the outputs of large language models and the implications for clinical decision support and human–computer interaction.
+     Year: 2024 | DOI: 10.1056/AIe2400961 | Chunks: 10
+
+146. This paper is sponsored content provided by Lyric. It has not been peer-reviewed or endorsed by <em>NEJM AI</em> and does not reflect the perspectives of the journal or its editors. Learn more about sponsored content and our business model here . In the rapidly evolving...
+     Year: 2024 | DOI: 10.1056/AI-S2400951 | Chunks: 9
+
+147. This study has tested the synthesis of high-accuracy differential diagnoses by aggregating responses from multiple heterogeneous large language models using methods for knowledge aggregation from the field of collective intelligence.
+     Year: 2024 | DOI: 10.1056/AIcs2400502 | Chunks: 23
+
+148. UT Southwestern Medical Center piloted the prospective deployment of an AI-based automated grading system for medical student post-encounter learner notes during administration of the fall 2023 Objective Structured Clinical Examinations. Using established rubrics, zero-shot GPT-4 with minimal prompt engineering was employed as a first-pass grader. GPT-4 achieved 90% agreement with...
+     Year: 2024 | DOI: 10.1056/AIcs2400631 | Chunks: 51
+
+149. Using DAX Copilot did not make clinicians more efficient in EHR use or financial impact, except for time spent in documentation for high DAX users.
+     Year: 2024 | DOI: 10.1056/AIoa2400659 | Chunks: 41
+
+150. While AI is often dual use and concerns about voice cloning often center on potential misuse, we argue that suppressing this technology may inflict tangible harm on patients by denying them the chance to reclaim their voice.
+     Year: 2024 | DOI: 10.1056/AIp2401000 | Chunks: 11
+

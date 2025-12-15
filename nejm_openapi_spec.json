@@ -1,0 +1,103 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "NEJM OneSearch API",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://onesearch-api.nejmgroup-production.org/api"
+    }
+  ],
+  "paths": {
+    "/search": {
+      "get": {
+        "summary": "Search articles",
+        "parameters": [
+          {
+            "name": "context",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": ["nejm", "catalyst", "clinician", "evidence", "nejm-ai", "federated"]
+            }
+          },
+          {
+            "name": "objectType", 
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "query",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "sortBy",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": ["relevance", "pubdate-descending", "pubdate-ascending", "citedByCount-descending", "mostViewed"]
+            }
+          },
+          {
+            "name": "pageLength",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100
+            }
+          },
+          {
+            "name": "startPage",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 9999999
+            }
+          }
+        ]
+      }
+    },
+    "/article": {
+      "get": {
+        "summary": "Get article by DOI",
+        "parameters": [
+          {
+            "name": "context",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": ["nejm", "catalyst", "clinician", "evidence", "nejm-ai"]
+            }
+          },
+          {
+            "name": "doi",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "format",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": ["json", "jats", "nlm", "mpeg21", "mets"]
+            }
+          }
+        ]
+      }
+    }
+  }
+}

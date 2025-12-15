@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>NEJM API Test</title>
+</head>
+<body>
+    <h1>Testing NEJM API</h1>
+    <button onclick="testAPI()">Test API</button>
+    <div id="result"></div>
+
+    <script>
+        async function testAPI() {
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = 'Testing...';
+            
+            try {
+                const response = await fetch('https://lwi6jeeczi.execute-api.us-east-1.amazonaws.com/prod/research', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'x-api-key': 'YOUR_API_KEY_HERE'
+                    },
+                    body: JSON.stringify({
+                        query: 'artificial intelligence healthcare',
+                        limit: 3
+                    })
+                });
+                
+                if (response.ok) {
+                    const result = await response.json();
+                    resultDiv.innerHTML = `
+                        <h3>Success!</h3>
+                        <p><strong>Sources found:</strong> ${result.sources ? result.sources.length : 0}</p>
+                        <p><strong>Answer length:</strong> ${result.answer ? result.answer.length : 0} characters</p>
+                        <p><strong>System:</strong> ${result.system}</p>
+                    `;
+                } else {
+                    resultDiv.innerHTML = `<p style="color: red;">Error: ${response.status}</p>`;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `<p style="color: red;">Error: ${error.message}</p>`;
+            }
+        }
+    </script>
+</body>
+</html>

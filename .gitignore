@@ -1,0 +1,76 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv/
+.env/
+
+# API Keys and sensitive data - NEVER COMMIT THESE!
+*.key
+*.pem
+api_keys.txt
+credentials.txt
+.env
+config.ini
+.api_keys_backup.json
+*api_keys*
+*credentials*
+*secrets*
+*token*
+*password*
+
+# Specific patterns to catch API keys
+# [REDACTED - Specific exposed key patterns blocked]
+
+# AWS credentials
+aws_credentials
+.aws/credentials
+.aws/config
+
+# Security cleanup script (contains exposed keys in comments)
+SECURITY_CLEANUP.py
+
+# Logs
+*.log
+logs/
+nejm_ingestion.log
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Qdrant data (if any local data files)
+qdrant_data/
+
+# Temporary files
+*.tmp
+*.temp
+temp/articles_export.json

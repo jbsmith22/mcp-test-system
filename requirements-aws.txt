@@ -1,0 +1,21 @@
+# AWS Lambda Requirements
+# Core dependencies for AWS deployment
+
+boto3>=1.34.0
+botocore>=1.34.0
+requests>=2.31.0
+pypdf>=3.17.0
+tiktoken>=0.5.0
+
+# Optional: for local testing with AWS services
+awscli>=2.15.0
+aws-sam-cli>=1.100.0
+
+# JSON handling
+ujson>=5.8.0
+
+# HTTP client optimizations
+urllib3>=2.0.0
+
+# Logging and monitoring
+structlog>=23.2.0

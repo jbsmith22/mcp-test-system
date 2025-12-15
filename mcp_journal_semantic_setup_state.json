@@ -1,0 +1,216 @@
+{
+  "host_environment": {
+    "machine": "MacBook Pro (Apple Silicon, 2025 M4)",
+    "os": "macOS (arm64)",
+    "shell": "zsh",
+    "tools": [
+      "docker",
+      "ollama",
+      "python3.12 + virtualenv",
+      "jq"
+    ]
+  },
+  "services": {
+    "qdrant": {
+      "deployment": "docker",
+      "container_name": "qdrant",
+      "image": "qdrant/qdrant:latest",
+      "start_command": "docker start qdrant",
+      "url": "http://127.0.0.1:6333",
+      "health_check": "curl -s http://127.0.0.1:6333/healthz",
+      "collections": {
+        "articles_ollama": {
+          "vector_size": 768,
+          "distance": "Cosine",
+          "named_vector": null,
+          "payload_schema": {
+            "document": "string",
+            "metadata": {
+              "title": "string",
+              "doi": "string | null",
+              "year": "integer | null",
+              "source": "string",
+              "chunk": "string"
+            }
+          },
+          "indexes": {
+            "metadata.title": "keyword",
+            "metadata.doi": "keyword",
+            "metadata.year": "integer",
+            "metadata.source": "keyword"
+          }
+        }
+      }
+    },
+    "ollama": {
+      "base_url": "http://127.0.0.1:11434",
+      "embedding_model": "nomic-embed-text",
+      "embedding_dimension": 768,
+      "embedding_endpoint": "/api/embeddings",
+      "request_example": {
+        "method": "POST",
+        "url": "http://127.0.0.1:11434/api/embeddings",
+        "body": {
+          "model": "nomic-embed-text",
+          "prompt": "hello world"
+        }
+      },
+      "response_shape": {
+        "embedding": [
+          "float",
+          "..."
+        ]
+      }
+    }
+  },
+  "python_environment": {
+    "venv_path": "/Users/jsmith/.venvs/qdrant-mcp-312",
+    "python_version": "3.12.x",
+    "activate_command": ". ~/.venvs/qdrant-mcp-312/bin/activate",
+    "libraries": [
+      "pypdf",
+      "tiktoken",
+      "requests",
+      "fastapi",
+      "uvicorn"
+    ]
+  },
+  "ingest_script": {
+    "path": "/Users/jsmith/Ingest.py",
+    "description": "Reads a PDF, chunks text, embeds chunks via Ollama, and upserts into Qdrant collection 'articles_ollama'.",
+    "config_defaults": {
+      "QDRANT_URL": "http://127.0.0.1:6333",
+      "COLLECTION": "articles_ollama",
+      "OLLAMA_URL": "http://127.0.0.1:11434",
+      "EMBED_MODEL": "nomic-embed-text",
+      "EMBED_DIM": 768
+    },
+    "cli_usage": {
+      "command": "python /Users/jsmith/Ingest.py",
+      "arguments": {
+        "--pdf": "<path-to-pdf>",
+        "--title": "<Article Title>",
+        "--doi": "<DOI or omit>",
+        "--year": "<YYYY or omit>"
+      }
+    },
+    "behavior": [
+      "Read PDF via pypdf from --pdf path.",
+      "Extract text from PDF.",
+      "Chunk using tiktoken with target ~512 tokens and ~128 token overlap.",
+      "For each chunk: call Ollama /api/embeddings with model 'nomic-embed-text' to get 768-dim vector.",
+      "Build Qdrant point with UUID id, vector, payload.document (chunk text), payload.metadata (title, doi, year, source='local-pdf', chunk).",
+      "Upsert batch into Qdrant collection 'articles_ollama' via QDRANT_URL."
+    ],
+    "metadata_schema": {
+      "title": "string",
+      "doi": "string | null",
+      "year": "integer | null",
+      "source": "string",
+      "chunk": "string"
+    },
+    "example_ingests": [
+      {
+        "pdf": "~/Documents/article5.pdf",
+        "title": "Article 5",
+        "doi": "10.1056/NEJM0000005",
+        "year": 2025
+      },
+      {
+        "pdf": "~/Documents/article4.pdf",
+        "title": "Article 4",
+        "doi": "10.1056/NEJM0000004",
+        "year": 2024
+      }
+    ]
+  },
+  "query_patterns": {
+    "embedding_for_query": {
+      "description": "Get embedding vector for a natural-language query.",
+      "bash_example": [
+        "QEMB=$(curl -s http://127.0.0.1:11434/api/embeddings \\",
+        "  -d '{\"model\":\"nomic-embed-text\",\"prompt\":\"aortic valve replacement long-term outcomes\"}' \\",
+        "  | jq -c '.embedding')"
+      ]
+    },
+    "basic_semantic_search": {
+      "description": "Top chunks with payload metadata.",
+      "bash_example": [
+        "jq -n --argjson v \"$QEMB\" '{",
+        "  vector: $v,",
+        "  limit: 10,",
+        "  with_payload: true",
+        "}' \\",
+        "| curl -s -X POST http://127.0.0.1:6333/collections/articles_ollama/points/search \\",
+        "     -H 'Content-Type: application/json' --data @- \\",
+        "| jq '.result[] | {score, title: .payload.metadata.title, doi: .payload.metadata.doi, year: .payload.metadata.year, chunk: .payload.metadata.chunk}'"
+      ]
+    },
+    "grouped_by_article": {
+      "description": "Collapse chunks into one best-scoring row per article (title+year+doi).",
+      "bash_example": [
+        "jq -n --argjson v \"$QEMB\" '{",
+        "  vector: $v,",
+        "  limit: 200,",
+        "  with_payload: true",
+        "}' \\",
+        "| curl -s -X POST http://127.0.0.1:6333/collections/articles_ollama/points/search \\",
+        "     -H 'Content-Type: application/json' --data @- \\",
+        "| jq '",
+        "  [ .result[]",
+        "    | {",
+        "        score,",
+        "        title: .payload.metadata.title,",
+        "        doi: .payload.metadata.doi,",
+        "        year: .payload.metadata.year,",
+        "        chunk: .payload.metadata.chunk",
+        "      }",
+        "  ]",
+        "  | group_by(.title, .doi, .year)",
+        "  | map(max_by(.score))",
+        "  | sort_by(-.score)",
+        "'"
+      ]
+    },
+    "ranked_doi_list": {
+      "description": "Given a query, return DOIs sorted by semantic match quality.",
+      "bash_example": [
+        "QEMB=$(curl -s http://127.0.0.1:11434/api/embeddings \\",
+        "  -d '{\"model\":\"nomic-embed-text\",\"prompt\":\"aortic valve replacement long-term outcomes\"}' \\",
+        "  | jq -c '.embedding')",
+        "",
+        "jq -n --argjson v \"$QEMB\" '{",
+        "  vector: $v,",
+        "  limit: 200,",
+        "  with_payload: true",
+        "}' \\",
+        "| curl -s -X POST http://127.0.0.1:6333/collections/articles_ollama/points/search \\",
+        "     -H 'Content-Type: application/json' --data @- \\",
+        "| jq '",
+        "  [ .result[]",
+        "    | {",
+        "        score,",
+        "        doi: .payload.metadata.doi",
+        "      }",
+        "    | select(.doi != null)",
+        "  ]",
+        "  | group_by(.doi)",
+        "  | map(max_by(.score))",
+        "  | sort_by(-.score)",
+        "  | map(.doi)",
+        "'"
+      ],
+      "example_output": [
+        "10.1056/NEJM0000005",
+        "10.1056/NEJM0000004"
+      ]
+    }
+  },
+  "assumptions_for_new_code": [
+    "Qdrant is reachable at http://127.0.0.1:6333 with collection 'articles_ollama', 768-dim cosine vectors.",
+    "Each point has payload.document and payload.metadata as described.",
+    "Ollama is reachable at http://127.0.0.1:11434 and supports POST /api/embeddings with model 'nomic-embed-text'.",
+    "/Users/jsmith/Ingest.py exists and accepts --pdf, --title, --doi, --year and writes to 'articles_ollama'.",
+    "New code should: encode query with Ollama, call Qdrant points/search, aggregate results by doi/title/year."
+  ]
+}

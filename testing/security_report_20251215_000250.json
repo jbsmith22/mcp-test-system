@@ -1,0 +1,117 @@
+{
+  "timestamp": "2025-12-15T00:02:50.114358",
+  "summary": {
+    "PASS": 8,
+    "FAIL": 0,
+    "WARN": 4,
+    "INFO": 3
+  },
+  "high_severity_count": 0,
+  "results": [
+    {
+      "timestamp": "2025-12-15T00:02:46.750718",
+      "check": "Public IP",
+      "status": "INFO",
+      "message": "Your current public IP: 108.20.28.24",
+      "severity": "INFO"
+    },
+    {
+      "timestamp": "2025-12-15T00:02:47.207245",
+      "check": "API Gateway",
+      "status": "INFO",
+      "message": "No NEJM APIs found yet",
+      "severity": "INFO"
+    },
+    {
+      "timestamp": "2025-12-15T00:02:47.714771",
+      "check": "OpenSearch Encryption",
+      "status": "PASS",
+      "message": "Domain nejm-research has encryption at rest",
+      "severity": "INFO"
+    },
+    {
+      "timestamp": "2025-12-15T00:02:47.714771",
+      "check": "OpenSearch Node Encryption",
+      "status": "PASS",
+      "message": "Domain nejm-research has node-to-node encryption",
+      "severity": "INFO"
+    },
+    {
+      "timestamp": "2025-12-15T00:02:47.714771",
+      "check": "OpenSearch HTTPS",
+      "status": "PASS",
+      "message": "Domain nejm-research enforces HTTPS",
+      "severity": "INFO"
+    },
+    {
+      "timestamp": "2025-12-15T00:02:48.388177",
+      "check": "S3 Bucket Check",
+      "status": "WARN",
+      "message": "Could not check bucket ad-nejm-cdn-sis: <botocore.errorfactory.S3Exceptions object at 0x0000016A0E7B32F0> object has no attribute NoSuchPublicAccessBlockConfiguration. Valid exceptions are: BucketAlreadyExists, BucketAlreadyOwnedByYou, EncryptionTypeMismatch, IdempotencyParameterMismatch, InvalidObjectState, InvalidRequest, InvalidWriteOffset, NoSuchBucket, NoSuchKey, NoSuchUpload, ObjectAlreadyInActiveTierError, ObjectNotInActiveTierError, TooManyParts",
+      "severity": "INFO"
+    },
+    {
+      "timestamp": "2025-12-15T00:02:48.739257",
+      "check": "S3 Public Access",
+      "status": "PASS",
+      "message": "Bucket nejm-research-1765756798-secure blocks all public access",
+      "severity": "INFO"
+    },
+    {
+      "timestamp": "2025-12-15T00:02:48.780128",
+      "check": "S3 Encryption",
+      "status": "PASS",
+      "message": "Bucket nejm-research-1765756798-secure has server-side encryption",
+      "severity": "INFO"
+    },
+    {
+      "timestamp": "2025-12-15T00:02:48.806896",
+      "check": "S3 Versioning",
+      "status": "PASS",
+      "message": "Bucket nejm-research-1765756798-secure has versioning enabled",
+      "severity": "INFO"
+    },
+    {
+      "timestamp": "2025-12-15T00:02:48.837987",
+      "check": "S3 Public Access",
+      "status": "PASS",
+      "message": "Bucket onepub-platform-components.nejmgroup-dev.org blocks all public access",
+      "severity": "INFO"
+    },
+    {
+      "timestamp": "2025-12-15T00:02:48.855348",
+      "check": "S3 Encryption",
+      "status": "PASS",
+      "message": "Bucket onepub-platform-components.nejmgroup-dev.org has server-side encryption",
+      "severity": "INFO"
+    },
+    {
+      "timestamp": "2025-12-15T00:02:48.890222",
+      "check": "S3 Versioning",
+      "status": "WARN",
+      "message": "Bucket onepub-platform-components.nejmgroup-dev.org does not have versioning enabled",
+      "severity": "INFO"
+    },
+    {
+      "timestamp": "2025-12-15T00:02:49.208285",
+      "check": "S3 Bucket Check",
+      "status": "WARN",
+      "message": "Could not check bucket sis-nejm-email-html: <botocore.errorfactory.S3Exceptions object at 0x0000016A0E7B32F0> object has no attribute NoSuchPublicAccessBlockConfiguration. Valid exceptions are: BucketAlreadyExists, BucketAlreadyOwnedByYou, EncryptionTypeMismatch, IdempotencyParameterMismatch, InvalidObjectState, InvalidRequest, InvalidWriteOffset, NoSuchBucket, NoSuchKey, NoSuchUpload, ObjectAlreadyInActiveTierError, ObjectNotInActiveTierError, TooManyParts",
+      "severity": "INFO"
+    },
+    {
+      "timestamp": "2025-12-15T00:02:49.516729",
+      "check": "Secrets Manager",
+      "status": "WARN",
+      "message": "No NEJM secrets found - credentials may not be stored securely",
+      "severity": "INFO"
+    },
+    {
+      "timestamp": "2025-12-15T00:02:50.114358",
+      "check": "Lambda Functions",
+      "status": "INFO",
+      "message": "No NEJM Lambda functions found yet",
+      "severity": "INFO"
+    }
+  ]
+}
