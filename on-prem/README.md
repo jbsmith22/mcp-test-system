@@ -9,6 +9,7 @@ This folder contains all files for running the NEJM Research Assistant locally o
 - `web_interface.py` - Local web dashboard (Flask)
 - `semantic_search.py` - Core search functionality
 - `nejm_search_cli.py` - Command-line search interface
+- **`mcp_server.py`** - 🆕 MCP server with full vector visibility
 
 ### Setup & Configuration
 - `setup_wizard.py` - Initial setup and configuration
@@ -34,9 +35,35 @@ This folder contains all files for running the NEJM Research Assistant locally o
 6. Start web interface: `python web_interface.py`
 7. Access at: http://localhost:8080
 
+## 🚀 MCP Server (NEW!)
+
+The NEJM Research Assistant is now available as an MCP server! This exposes the semantic search system to Kiro and other MCP clients with **full vector visibility**.
+
+### Quick MCP Setup
+
+```bash
+# Install MCP dependencies
+pip install -r requirements-mcp.txt
+
+# Configure in Kiro (edit .kiro/settings/mcp.json)
+# See MCP_SERVER_SETUP.md for detailed instructions
+
+# Use from Kiro
+"Search NEJM for articles about AI in healthcare and show me the embedding vectors"
+```
+
+**Features:**
+- 🔍 Semantic search with vector embeddings visible
+- 📊 Similarity scores and relevance weights
+- 🔬 Compare embeddings between texts
+- 📈 Database statistics and health monitoring
+
+**See `MCP_SERVER_SETUP.md` for complete setup instructions!**
+
 ## Prerequisites
 
 - Docker (for Qdrant and Ollama)
 - Python 3.8+
 - 8GB+ RAM recommended
 - NEJM API credentials
+- For MCP: `pip install -r requirements-mcp.txt`

@@ -1,0 +1,21 @@
+{
+  "mcpServers": {
+    "nejm-research": {
+      "command": "python",
+      "args": [
+        "/absolute/path/to/nejm-research-assistant/on-prem/mcp_server.py"
+      ],
+      "env": {
+        "QDRANT_URL": "http://127.0.0.1:6333",
+        "OLLAMA_URL": "http://127.0.0.1:11434"
+      },
+      "disabled": false,
+      "autoApprove": [
+        "search_articles",
+        "get_database_stats",
+        "get_article_by_doi",
+        "compare_embeddings"
+      ]
+    }
+  }
+}
