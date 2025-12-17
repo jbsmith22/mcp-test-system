@@ -1,0 +1,1125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCP Server Debug & Learning - NEJM Research Assistant</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #ecf0f1;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: #2c3e50;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 300;
+        }
+        
+        .header p {
+            opacity: 0.9;
+            font-size: 1.1em;
+        }
+        
+        .main-content {
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            gap: 0;
+            min-height: 800px;
+        }
+        
+        .sidebar {
+            background: #34495e;
+            padding: 30px;
+            border-right: 1px solid #4a5f7a;
+        }
+        
+        .debug-panel {
+            padding: 30px;
+            background: #2c3e50;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #ecf0f1;
+        }
+        
+        input[type="text"], textarea, select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #4a5f7a;
+            border-radius: 8px;
+            font-size: 14px;
+            background: #34495e;
+            color: #ecf0f1;
+            transition: border-color 0.3s;
+        }
+        
+        input[type="text"]:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: #e74c3c;
+        }
+        
+        textarea {
+            resize: vertical;
+            min-height: 80px;
+            font-family: monospace;
+        }
+        
+        .btn {
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(231, 76, 60, 0.3);
+        }
+        
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .btn-secondary {
+            background: linear-gradient(135deg, #95a5a6 0%, #7f8c8d 100%);
+        }
+        
+        .step-container {
+            margin-bottom: 30px;
+        }
+        
+        .step {
+            background: #34495e;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            overflow: hidden;
+            border-left: 4px solid #e74c3c;
+        }
+        
+        .step-header {
+            background: #3a526b;
+            padding: 15px 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s;
+        }
+        
+        .step-header:hover {
+            background: #4a6280;
+        }
+        
+        .step-title {
+            font-weight: 600;
+            color: #ecf0f1;
+        }
+        
+        .step-status {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        .status-pending {
+            background: #95a5a6;
+            color: white;
+        }
+        
+        .status-running {
+            background: #f39c12;
+            color: white;
+            animation: pulse 1.5s infinite;
+        }
+        
+        .status-success {
+            background: #27ae60;
+            color: white;
+        }
+        
+        .status-error {
+            background: #e74c3c;
+            color: white;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.6; }
+            100% { opacity: 1; }
+        }
+        
+        .step-content {
+            padding: 20px;
+            display: none;
+            border-top: 1px solid #4a5f7a;
+        }
+        
+        .step-content.expanded {
+            display: block;
+        }
+        
+        .code-block {
+            background: #1e2832;
+            border: 1px solid #4a5f7a;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 10px 0;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            color: #a8d8ea;
+        }
+        
+        .json-viewer {
+            background: #1e2832;
+            border: 1px solid #4a5f7a;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 10px 0;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        
+        .metric {
+            display: inline-block;
+            background: #3a526b;
+            padding: 8px 12px;
+            border-radius: 5px;
+            margin: 5px;
+            font-size: 12px;
+        }
+        
+        .metric-label {
+            color: #bdc3c7;
+        }
+        
+        .metric-value {
+            color: #e74c3c;
+            font-weight: 600;
+        }
+        
+        .vector-preview {
+            background: #1e2832;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 10px 0;
+            font-family: monospace;
+            font-size: 11px;
+            color: #52c41a;
+        }
+        
+        .loading {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            color: #bdc3c7;
+        }
+        
+        .spinner {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #4a5f7a;
+            border-top: 2px solid #e74c3c;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-right: 10px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .error {
+            background: #c0392b;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #a93226;
+        }
+        
+        .success {
+            background: #27ae60;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #229954;
+        }
+        
+        .info {
+            background: #3498db;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #2980b9;
+        }
+        
+        .nav-links {
+            margin-bottom: 20px;
+        }
+        
+        .nav-link {
+            display: block;
+            color: #ecf0f1;
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin-bottom: 5px;
+            transition: background 0.3s;
+        }
+        
+        .nav-link:hover {
+            background: #4a5f7a;
+        }
+        
+        .nav-link.active {
+            background: #e74c3c;
+        }
+        
+        @media (max-width: 1024px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                border-right: none;
+                border-bottom: 1px solid #4a5f7a;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🔍 MCP Server Debug & Learning</h1>
+            <p>Step-by-step visualization of query processing and ingestion</p>
+        </div>
+        
+        <div class="main-content">
+            <div class="sidebar">
+                <div class="nav-links">
+                    <a href="../mcp_web_interface.html" class="nav-link">← Back to Main Interface</a>
+                    <a href="#" class="nav-link active" onclick="showSection('query')">Query Processing</a>
+                    <a href="#" class="nav-link" onclick="showSection('ingestion')">Article Ingestion</a>
+                    <a href="#" class="nav-link" onclick="showSection('embeddings')">Vector Embeddings</a>
+                </div>
+                
+                <div class="form-group">
+                    <label for="debug-query">Test Query</label>
+                    <textarea id="debug-query" placeholder="Enter your research question...">What are the latest treatments for diabetes?</textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="debug-tool">MCP Tool</label>
+                    <select id="debug-tool">
+                        <option value="search_articles">search_articles</option>
+                        <option value="ask_research_question">ask_research_question</option>
+                        <option value="get_database_stats">get_database_stats</option>
+                        <option value="compare_embeddings">compare_embeddings</option>
+                    </select>
+                </div>
+                
+                <button class="btn" onclick="debugQuery()">🔍 Debug Query</button>
+                <button class="btn btn-secondary" onclick="clearDebug()">🗑️ Clear Debug</button>
+                
+                <div class="form-group" style="margin-top: 30px;">
+                    <label>Debug Options</label>
+                    <div style="margin-top: 10px;">
+                        <label style="display: flex; align-items: center; margin-bottom: 10px;">
+                            <input type="checkbox" id="show-vectors" checked style="margin-right: 8px;">
+                            Show Vector Details
+                        </label>
+                        <label style="display: flex; align-items: center; margin-bottom: 10px;">
+                            <input type="checkbox" id="show-timing" checked style="margin-right: 8px;">
+                            Show Timing Info
+                        </label>
+                        <label style="display: flex; align-items: center;">
+                            <input type="checkbox" id="show-raw" style="margin-right: 8px;">
+                            Show Raw Responses
+                        </label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="debug-panel">
+                <div id="query-section" class="debug-section">
+                    <h2 style="margin-bottom: 20px; color: #e74c3c;">Query Processing Pipeline</h2>
+                    
+                    <div class="step-container" id="debug-steps">
+                        <div class="info">
+                            <strong>Welcome to MCP Debug Mode!</strong><br>
+                            This page shows you exactly what happens when you make a query to the MCP server. 
+                            Each step is logged with timing, vector information, and raw data.
+                            <br><br>
+                            <strong>Try it:</strong> Enter a query on the left and click "Debug Query" to see the magic happen!
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="ingestion-section" class="debug-section" style="display: none;">
+                    <h2 style="margin-bottom: 20px; color: #e74c3c;">Article Ingestion Process</h2>
+                    
+                    <div class="info">
+                        <strong>Article Ingestion Pipeline</strong><br>
+                        This shows how new articles are processed and added to the database.
+                    </div>
+                    
+                    <button class="btn" onclick="debugIngestion()" style="width: auto; margin: 20px 0;">🔄 Simulate Ingestion</button>
+                    
+                    <div id="ingestion-steps"></div>
+                </div>
+                
+                <div id="embeddings-section" class="debug-section" style="display: none;">
+                    <h2 style="margin-bottom: 20px; color: #e74c3c;">Vector Embeddings Deep Dive</h2>
+                    
+                    <div class="info">
+                        <strong>Understanding Vector Embeddings</strong><br>
+                        See how text is converted to 1536-dimensional vectors and how similarity is calculated.
+                    </div>
+                    
+                    <div class="form-group" style="margin: 20px 0;">
+                        <label>Compare Two Texts</label>
+                        <input type="text" id="text1" placeholder="First text..." value="diabetes treatment">
+                        <input type="text" id="text2" placeholder="Second text..." value="glucose management" style="margin-top: 10px;">
+                        <button class="btn" onclick="debugEmbeddings()" style="width: auto; margin-top: 10px;">🧮 Compare Embeddings</button>
+                    </div>
+                    
+                    <div id="embeddings-steps"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // MCP API Configuration
+        const MCP_API_URL = 'https://lwi6jeeczi.execute-api.us-east-1.amazonaws.com/prod/research';
+        
+        let debugSteps = [];
+        let currentStepIndex = 0;
+        
+        // Show different sections
+        function showSection(section) {
+            // Hide all sections
+            document.querySelectorAll('.debug-section').forEach(s => s.style.display = 'none');
+            document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+            
+            // Show selected section
+            document.getElementById(section + '-section').style.display = 'block';
+            event.target.classList.add('active');
+        }
+        
+        // Clear debug output
+        function clearDebug() {
+            document.getElementById('debug-steps').innerHTML = `
+                <div class="info">
+                    <strong>Debug cleared!</strong><br>
+                    Ready for a new query. Enter your question and click "Debug Query" to start.
+                </div>
+            `;
+            debugSteps = [];
+            currentStepIndex = 0;
+        }
+        
+        // Create a debug step
+        function createStep(title, status = 'pending') {
+            const stepId = `step-${debugSteps.length}`;
+            debugSteps.push({
+                id: stepId,
+                title: title,
+                status: status,
+                content: '',
+                startTime: Date.now()
+            });
+            
+            const stepHtml = `
+                <div class="step" id="${stepId}">
+                    <div class="step-header" onclick="toggleStep('${stepId}')">
+                        <span class="step-title">${title}</span>
+                        <span class="step-status status-${status}" id="${stepId}-status">${status.toUpperCase()}</span>
+                    </div>
+                    <div class="step-content" id="${stepId}-content">
+                        <div class="loading">
+                            <div class="spinner"></div>
+                            Initializing step...
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            return { stepId, stepHtml };
+        }
+        
+        // Update step status and content
+        function updateStep(stepId, status, content, metrics = {}) {
+            const step = debugSteps.find(s => s.id === stepId);
+            if (step) {
+                step.status = status;
+                step.content = content;
+                step.endTime = Date.now();
+                step.duration = step.endTime - step.startTime;
+            }
+            
+            // Update UI
+            const statusEl = document.getElementById(`${stepId}-status`);
+            const contentEl = document.getElementById(`${stepId}-content`);
+            
+            if (statusEl) {
+                statusEl.className = `step-status status-${status}`;
+                statusEl.textContent = status.toUpperCase();
+            }
+            
+            if (contentEl) {
+                let html = content;
+                
+                // Add timing if enabled
+                if (document.getElementById('show-timing').checked && step.duration) {
+                    html += `
+                        <div class="metric">
+                            <span class="metric-label">Duration:</span>
+                            <span class="metric-value">${step.duration}ms</span>
+                        </div>
+                    `;
+                }
+                
+                // Add metrics
+                Object.entries(metrics).forEach(([key, value]) => {
+                    html += `
+                        <div class="metric">
+                            <span class="metric-label">${key}:</span>
+                            <span class="metric-value">${value}</span>
+                        </div>
+                    `;
+                });
+                
+                contentEl.innerHTML = html;
+                contentEl.classList.add('expanded'); // Auto-expand completed steps
+            }
+        }
+        
+        // Toggle step expansion
+        function toggleStep(stepId) {
+            const contentEl = document.getElementById(`${stepId}-content`);
+            if (contentEl) {
+                contentEl.classList.toggle('expanded');
+            }
+        }
+        
+        // Format JSON for display
+        function formatJSON(obj) {
+            return `<div class="json-viewer">${JSON.stringify(obj, null, 2)}</div>`;
+        }
+        
+        // Format vector preview
+        function formatVector(vector, label = 'Vector') {
+            if (!vector || !Array.isArray(vector)) return '';
+            
+            const preview = vector.slice(0, 10).map(v => v.toFixed(4)).join(', ');
+            const norm = Math.sqrt(vector.reduce((sum, v) => sum + v * v, 0));
+            
+            return `
+                <div class="vector-preview">
+                    <strong>${label}:</strong><br>
+                    Dimensions: ${vector.length}<br>
+                    Norm: ${norm.toFixed(4)}<br>
+                    Preview: [${preview}...]
+                </div>
+            `;
+        }
+        
+        // Main debug query function
+        async function debugQuery() {
+            const query = document.getElementById('debug-query').value.trim();
+            const tool = document.getElementById('debug-tool').value;
+            
+            if (!query && tool !== 'get_database_stats') {
+                alert('Please enter a query');
+                return;
+            }
+            
+            // Clear previous debug
+            document.getElementById('debug-steps').innerHTML = '';
+            debugSteps = [];
+            
+            try {
+                // Step 1: Parse Request
+                const step1 = createStep('1. 📝 Understanding Your Question', 'running');
+                document.getElementById('debug-steps').innerHTML += step1.stepHtml;
+                
+                const mcpRequest = {
+                    method: 'tools/call',
+                    params: {
+                        name: tool,
+                        arguments: tool === 'search_articles' ? 
+                            { query: query, max_results: 5 } :
+                            tool === 'ask_research_question' ?
+                            { question: query, max_sources: 3 } :
+                            tool === 'compare_embeddings' ?
+                            { text1: query, text2: 'medical research' } :
+                            {}
+                    }
+                };
+                
+                updateStep(step1.stepId, 'success', `
+                    <div class="success">✅ Your question has been understood and formatted</div>
+                    <div class="info" style="margin: 15px 0;">
+                        <strong>What just happened:</strong><br>
+                        I took your question "${query}" and packaged it into a structured format that the MCP (Model Context Protocol) server can understand. Think of this like translating your natural language question into a format that computers can process efficiently.
+                        <br><br>
+                        <strong>Why this matters:</strong><br>
+                        The MCP protocol ensures that your question is handled consistently and securely, whether you're searching for articles, asking for AI analysis, or comparing concepts.
+                    </div>
+                    ${formatJSON(mcpRequest)}
+                `, {
+                    'Tool Selected': tool,
+                    'Query Length': `${query.length} characters`,
+                    'Request Type': 'MCP Tool Call'
+                });
+                
+                // Step 2: Send to Lambda
+                const step2 = createStep('2. 🚀 Sending to the Cloud Brain', 'running');
+                document.getElementById('debug-steps').innerHTML += step2.stepHtml;
+                
+                const startTime = Date.now();
+                const response = await fetch(MCP_API_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(mcpRequest)
+                });
+                const networkTime = Date.now() - startTime;
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${await response.text()}`);
+                }
+                
+                updateStep(step2.stepId, 'success', `
+                    <div class="success">✅ Successfully connected to the research engine</div>
+                    <div class="info" style="margin: 15px 0;">
+                        <strong>What just happened:</strong><br>
+                        Your formatted question was sent over the internet to an AWS Lambda function - think of it as a specialized computer program running in Amazon's cloud. This "cloud brain" is where all the heavy lifting happens: searching through 412 medical articles, generating AI responses, and processing vector embeddings.
+                        <br><br>
+                        <strong>The journey:</strong><br>
+                        Your request traveled from your browser → through the internet → to AWS servers in Virginia → to our specialized medical research function. The round trip took ${networkTime}ms (that's ${(networkTime/1000).toFixed(2)} seconds).
+                        <br><br>
+                        <strong>Why the cloud:</strong><br>
+                        The cloud gives us access to powerful AI models (like Claude 3.5 Sonnet) and can search through massive databases much faster than a local computer could.
+                    </div>
+                    <div class="code-block">
+                        Status: ${response.status} ${response.statusText}<br>
+                        Content-Type: ${response.headers.get('content-type')}<br>
+                        Response Size: ${response.headers.get('content-length') || 'Unknown'} bytes<br>
+                        Server Location: AWS US-East-1 (Virginia)
+                    </div>
+                `, {
+                    'Network Time': `${networkTime}ms`,
+                    'Status Code': response.status,
+                    'Connection': 'Secure HTTPS'
+                });
+                
+                // Step 3: Parse Response
+                const step3 = createStep('3. 📦 Unpacking the Results', 'running');
+                document.getElementById('debug-steps').innerHTML += step3.stepHtml;
+                
+                const mcpResponse = await response.json();
+                
+                if (mcpResponse.isError) {
+                    throw new Error(mcpResponse.error);
+                }
+                
+                const toolResult = JSON.parse(mcpResponse.content[0].text);
+                
+                updateStep(step3.stepId, 'success', `
+                    <div class="success">✅ Results successfully received and unpacked</div>
+                    <div class="info" style="margin: 15px 0;">
+                        <strong>What just happened:</strong><br>
+                        The cloud function sent back a response containing your results. This response came wrapped in the MCP protocol format - like a package with specific labels and structure. I just "unwrapped" this package to get to the actual research data inside.
+                        <br><br>
+                        <strong>The unwrapping process:</strong><br>
+                        1. Received the raw response from the server<br>
+                        2. Checked that it arrived without errors<br>
+                        3. Extracted the actual research results from the MCP wrapper<br>
+                        4. Converted the data into a format we can work with
+                        <br><br>
+                        <strong>What's inside:</strong><br>
+                        The package contains ${tool === 'search_articles' ? 'search results with article matches and relevance scores' : 
+                        tool === 'ask_research_question' ? 'an AI-generated answer based on medical literature' : 
+                        'processed data from the research database'}.
+                    </div>
+                    ${document.getElementById('show-raw').checked ? formatJSON(mcpResponse) : ''}
+                `, {
+                    'Response Type': 'MCP Tool Result',
+                    'Has Error': mcpResponse.isError ? 'Yes' : 'No',
+                    'Data Format': 'JSON'
+                });
+                
+                // Step 4: Process Tool Result with Detailed Debug Info
+                const step4 = createStep('4. 🧠 Processing Your Request', 'running');
+                document.getElementById('debug-steps').innerHTML += step4.stepHtml;
+                
+                let step4Content = '';
+                let step4Metrics = {};
+                
+                if (tool === 'search_articles') {
+                    step4Content = `
+                        <div class="success">✅ Semantic search completed successfully</div>
+                        <div class="info" style="margin: 15px 0;">
+                            <strong>What just happened:</strong><br>
+                            Your question "${toolResult.query.text}" was processed through our advanced semantic search system. Unlike simple keyword matching, this system understands the <em>meaning</em> behind your words and finds articles that are conceptually related, even if they don't use the exact same terms.
+                            <br><br>
+                            <strong>The magic of semantic search:</strong><br>
+                            Instead of just looking for articles that contain your exact words, the system converted your question into a mathematical representation (called a "vector") that captures its meaning. Then it compared this against 412 medical articles to find the most relevant matches.
+                        </div>
+                        <div class="code-block">
+                            Query: "${toolResult.query.text}"<br>
+                            Results Found: ${toolResult.total_found}<br>
+                            Search Threshold: ${toolResult.search_params.threshold} (minimum relevance score)<br>
+                            Total Processing Time: ${toolResult.total_processing_time_ms}ms
+                        </div>
+                    `;
+                    
+                    // Add detailed debug info if available
+                    if (toolResult.debug_info) {
+                        step4Content += `
+                            <h4 style="margin: 15px 0 10px 0; color: #e74c3c;">🔍 The Three-Stage Search Process:</h4>
+                            
+                            <div class="json-viewer">
+                                <strong>Stage 1: Converting Words to Math (${toolResult.debug_info.embedding_generation.duration_ms}ms)</strong><br>
+                                <div style="margin: 10px 0; padding: 10px; background: #1a252f; border-radius: 5px;">
+                                    <strong>What happened:</strong> Your question "${toolResult.debug_info.embedding_generation.query_text}" was sent to Amazon's Titan AI model, which converted it into a list of 1,536 numbers. These numbers represent the "meaning" of your question in a way computers can understand and compare.
+                                    <br><br>
+                                    <strong>Technical details:</strong><br>
+                                    • AI Model: ${toolResult.debug_info.embedding_generation.model}<br>
+                                    • Vector Dimensions: ${toolResult.debug_info.embedding_generation.dimension} numbers<br>
+                                    • Vector Strength: ${toolResult.debug_info.embedding_generation.vector_norm?.toFixed(4)} (mathematical magnitude)<br>
+                                    • Sample Numbers: [${toolResult.debug_info.embedding_generation.vector_preview?.map(v => v.toFixed(4)).join(', ')}...]
+                                    <br><br>
+                                    <strong>Why this works:</strong> Similar concepts get similar numbers. "Diabetes treatment" and "glucose management" would have very similar vector representations, even though they use different words.
+                                </div>
+                            </div>
+                            
+                            <div class="json-viewer">
+                                <strong>Stage 2: Searching the Database (${toolResult.debug_info.opensearch_query.duration_ms}ms)</strong><br>
+                                <div style="margin: 10px 0; padding: 10px; background: #1a252f; border-radius: 5px;">
+                                    <strong>What happened:</strong> The system used your question's vector to search through our database of 412 medical articles. It used a "hybrid" approach - combining both semantic similarity (meaning-based) and traditional keyword matching for the best results.
+                                    <br><br>
+                                    <strong>Search strategy:</strong><br>
+                                    • Search Type: ${toolResult.debug_info.opensearch_query.query_type}<br>
+                                    • Fields Searched: ${toolResult.debug_info.opensearch_query.fields_searched?.join(', ')}<br>
+                                    • Initial Matches: ${toolResult.debug_info.opensearch_query.raw_hits} articles<br>
+                                    • Database Response Time: ${toolResult.debug_info.opensearch_query.opensearch_response?.took}ms<br>
+                                    • Search Timeout: ${toolResult.debug_info.opensearch_query.opensearch_response?.timed_out ? 'Yes (search was too slow)' : 'No (search completed normally)'}
+                                    <br><br>
+                                    <strong>How it works:</strong> The database compared your question's vector against the vectors of all 412 articles, calculating similarity scores. Articles with higher similarity scores are more relevant to your question.
+                                </div>
+                            </div>
+                            
+                            <div class="json-viewer">
+                                <strong>Stage 3: Ranking and Filtering Results (${toolResult.debug_info.result_processing.duration_ms}ms)</strong><br>
+                                <div style="margin: 10px 0; padding: 10px; background: #1a252f; border-radius: 5px;">
+                                    <strong>What happened:</strong> The system took all the matching articles and ranked them by relevance, then filtered out articles that didn't meet the minimum quality threshold.
+                                    <br><br>
+                                    <strong>Processing results:</strong><br>
+                                    • Initial Matches: ${toolResult.debug_info.result_processing.raw_hits} articles<br>
+                                    • Filtered Out: ${toolResult.debug_info.result_processing.filtered_by_threshold} articles (below ${toolResult.search_params.threshold} relevance threshold)<br>
+                                    • Unique Articles: ${toolResult.debug_info.result_processing.unique_articles} (duplicates removed)<br>
+                                    • Final Results: ${toolResult.debug_info.result_processing.final_results} articles<br>
+                                    • Relevance Range: ${toolResult.debug_info.result_processing.score_distribution?.lowest?.toFixed(3)} - ${toolResult.debug_info.result_processing.score_distribution?.highest?.toFixed(3)}<br>
+                                    • Average Relevance: ${toolResult.debug_info.result_processing.score_distribution?.average?.toFixed(3)}
+                                    <br><br>
+                                    <strong>Quality control:</strong> Only articles with relevance scores above ${toolResult.search_params.threshold} made it to your final results, ensuring you see only the most relevant medical literature.
+                                </div>
+                            </div>
+                        `;
+                    }
+                    
+                    if (document.getElementById('show-vectors').checked && toolResult.query.embedding) {
+                        step4Content += formatVector(
+                            toolResult.query.embedding.vector_preview, 
+                            'Query Embedding'
+                        );
+                    }
+                    
+                    step4Metrics = {
+                        'Articles Found': toolResult.total_found,
+                        'Vector Model': toolResult.query.embedding?.model || 'Unknown',
+                        'Vector Dimensions': toolResult.query.embedding?.dimension || 'Unknown',
+                        'Processing Time': `${toolResult.total_processing_time_ms}ms`
+                    };
+                    
+                } else if (tool === 'ask_research_question') {
+                    step4Content = `
+                        <div class="success">✅ AI research answer generated using RAG (Retrieval-Augmented Generation)</div>
+                        <div class="info" style="margin: 15px 0;">
+                            <strong>What just happened:</strong><br>
+                            Your question "${toolResult.question}" was processed through a sophisticated AI system called RAG (Retrieval-Augmented Generation). This means the AI didn't just make up an answer - it first searched through real medical literature, found the most relevant articles, and then used that information to generate a well-informed response.
+                            <br><br>
+                            <strong>Why RAG is powerful:</strong><br>
+                            Instead of relying on the AI's training data (which might be outdated), RAG gives the AI access to current, specific medical literature. This makes the answers more accurate, up-to-date, and trustworthy.
+                        </div>
+                        <div class="code-block">
+                            Question: "${toolResult.question}"<br>
+                            Answer Length: ${toolResult.answer?.length || 0} characters<br>
+                            Sources Used: ${toolResult.total_sources} medical articles<br>
+                            Total Processing Time: ${toolResult.total_processing_time_ms}ms
+                        </div>
+                    `;
+                    
+                    // Add detailed RAG debug info if available
+                    if (toolResult.debug_info) {
+                        step4Content += `
+                            <h4 style="margin: 15px 0 10px 0; color: #e74c3c;">🤖 The Five-Stage RAG Process:</h4>
+                            
+                            <div class="json-viewer">
+                                <strong>Stage 1: Finding Relevant Articles (${toolResult.debug_info.step1_search.duration_ms}ms)</strong><br>
+                                <div style="margin: 10px 0; padding: 10px; background: #1a252f; border-radius: 5px;">
+                                    <strong>What happened:</strong> The system first searched through our database of 412 medical articles to find the ones most relevant to your question "${toolResult.debug_info.step1_search.question}".
+                                    <br><br>
+                                    <strong>Search results:</strong><br>
+                                    • Articles Found: ${toolResult.debug_info.step1_search.articles_found}<br>
+                                    • Search Success: ${toolResult.debug_info.step1_search.search_successful ? 'Yes - found relevant articles' : 'No - no relevant articles found'}<br>
+                                    • Quality Threshold: ${toolResult.debug_info.step1_search.search_params?.threshold} (minimum relevance required)
+                                    <br><br>
+                                    <strong>Why this step matters:</strong> The AI needs current, relevant information to give you an accurate answer. This step ensures we're working with the best available medical literature.
+                                </div>
+                            </div>
+                            
+                            <div class="json-viewer">
+                                <strong>Stage 2: Building the Knowledge Context (${toolResult.debug_info.step2_context_building.duration_ms}ms)</strong><br>
+                                <div style="margin: 10px 0; padding: 10px; background: #1a252f; border-radius: 5px;">
+                                    <strong>What happened:</strong> The system took the most relevant articles and combined their key information into a "context" - essentially creating a custom knowledge base for your specific question.
+                                    <br><br>
+                                    <strong>Context details:</strong><br>
+                                    • Articles Selected: ${toolResult.debug_info.step2_context_building.articles_selected} (top matches only)<br>
+                                    • Context Size: ${toolResult.debug_info.step2_context_building.context_length_chars} characters (${toolResult.debug_info.step2_context_building.context_length_words} words)<br>
+                                    • Selected Articles:
+                                    ${toolResult.debug_info.step2_context_building.articles_metadata?.map((article, i) => 
+                                        `<br>  ${i+1}. ${article.title} (${article.relevance_score}% relevant)`
+                                    ).join('')}
+                                    <br><br>
+                                    <strong>Quality control:</strong> Only the most relevant articles were included to ensure the AI has focused, high-quality information to work with.
+                                </div>
+                            </div>
+                            
+                            <div class="json-viewer">
+                                <strong>Stage 3: Crafting the AI Prompt (${toolResult.debug_info.step3_prompt_construction.duration_ms}ms)</strong><br>
+                                <div style="margin: 10px 0; padding: 10px; background: #1a252f; border-radius: 5px;">
+                                    <strong>What happened:</strong> The system created a detailed prompt for Claude (the AI) that includes your question plus all the relevant medical literature context. This is like giving the AI a mini medical library focused on your specific question.
+                                    <br><br>
+                                    <strong>Prompt details:</strong><br>
+                                    • Prompt Length: ${toolResult.debug_info.step3_prompt_construction.prompt_length_chars} characters (${toolResult.debug_info.step3_prompt_construction.prompt_length_words} words)<br>
+                                    • Sources Included: ${toolResult.debug_info.step3_prompt_construction.sources_included} articles<br>
+                                    • Structure: Your question + relevant medical literature + instructions for analysis
+                                    <br><br>
+                                    <strong>Why this matters:</strong> The prompt tells Claude exactly what information to use and how to analyze it, ensuring the response is grounded in real medical research.
+                                </div>
+                            </div>
+                            
+                            <div class="json-viewer">
+                                <strong>Stage 4: AI Analysis by Claude (${toolResult.debug_info.step4_llm_invocation.duration_ms}ms)</strong><br>
+                                <div style="margin: 10px 0; padding: 10px; background: #1a252f; border-radius: 5px;">
+                                    <strong>What happened:</strong> Claude 3.5 Sonnet (Anthropic's advanced AI) analyzed your question along with the relevant medical literature and generated a comprehensive, evidence-based response.
+                                    <br><br>
+                                    <strong>AI processing:</strong><br>
+                                    • AI Model: ${toolResult.debug_info.step4_llm_invocation.model_id}<br>
+                                    • Max Response Length: ${toolResult.debug_info.step4_llm_invocation.max_tokens} tokens<br>
+                                    • Processing Success: ${toolResult.debug_info.step4_llm_invocation.request_successful ? 'Yes - Claude generated a response' : 'No - Claude encountered an error'}
+                                    <br><br>
+                                    <strong>Claude's capabilities:</strong> Claude can understand complex medical concepts, synthesize information from multiple sources, and present findings in clear, accessible language while maintaining scientific accuracy.
+                                </div>
+                            </div>
+                            
+                            <div class="json-viewer">
+                                <strong>Stage 5: Finalizing the Response (${toolResult.debug_info.step5_response_processing.duration_ms}ms)</strong><br>
+                                <div style="margin: 10px 0; padding: 10px; background: #1a252f; border-radius: 5px;">
+                                    <strong>What happened:</strong> The system processed Claude's response, formatted it properly, and prepared it for display along with source citations.
+                                    <br><br>
+                                    <strong>Final answer:</strong><br>
+                                    • Answer Length: ${toolResult.debug_info.step5_response_processing.answer_length_chars} characters (${toolResult.debug_info.step5_response_processing.answer_length_words} words)<br>
+                                    • Quality: Evidence-based response grounded in medical literature<br>
+                                    • Sources: Traceable back to specific medical articles
+                                    <br><br>
+                                    <strong>The result:</strong> You now have an AI-generated answer that's informed by current medical research, not just general AI training data.
+                                </div>
+                            </div>
+                        `;
+                        
+                        // Show the actual prompt sent to Claude if raw data is enabled
+                        if (document.getElementById('show-raw').checked && toolResult.debug_info.step3_prompt_construction.full_prompt) {
+                            step4Content += `
+                                <h4 style="margin: 15px 0 10px 0; color: #e74c3c;">📝 Actual Prompt Sent to Claude:</h4>
+                                <div class="code-block" style="max-height: 300px; overflow-y: auto; white-space: pre-wrap; font-size: 11px;">
+${toolResult.debug_info.step3_prompt_construction.full_prompt}
+                                </div>
+                            `;
+                        }
+                        
+                        // Show the context that was built
+                        if (document.getElementById('show-raw').checked && toolResult.debug_info.step2_context_building.full_context) {
+                            step4Content += `
+                                <h4 style="margin: 15px 0 10px 0; color: #e74c3c;">📚 Context Built from Articles:</h4>
+                                <div class="code-block" style="max-height: 300px; overflow-y: auto; white-space: pre-wrap; font-size: 11px;">
+${toolResult.debug_info.step2_context_building.full_context}
+                                </div>
+                            `;
+                        }
+                        
+                        // Show Claude's raw response
+                        if (document.getElementById('show-raw').checked && toolResult.debug_info.step5_response_processing.claude_response_raw) {
+                            step4Content += `
+                                <h4 style="margin: 15px 0 10px 0; color: #e74c3c;">🧠 Claude's Raw Response:</h4>
+                                <div class="json-viewer" style="max-height: 200px; overflow-y: auto;">
+${JSON.stringify(toolResult.debug_info.step5_response_processing.claude_response_raw, null, 2)}
+                                </div>
+                            `;
+                        }
+                    }
+                    
+                    step4Metrics = {
+                        'Answer Length': `${toolResult.answer?.length || 0} chars`,
+                        'Sources': toolResult.total_sources,
+                        'AI Model': 'Claude 3.5 Sonnet',
+                        'Processing Time': `${toolResult.total_processing_time_ms}ms`
+                    };
+                    
+                } else if (tool === 'get_database_stats') {
+                    step4Content = `
+                        <div class="success">Database statistics retrieved</div>
+                        <div class="code-block">
+                            Total Articles: ${toolResult.total_articles}<br>
+                            Index Name: ${toolResult.index_name}<br>
+                            Status: ${toolResult.status}
+                        </div>
+                    `;
+                    
+                    step4Metrics = {
+                        'Total Articles': toolResult.total_articles,
+                        'Database Status': toolResult.status,
+                        'Sources': Object.keys(toolResult.sources || {}).length
+                    };
+                }
+                
+                updateStep(step4.stepId, 'success', step4Content, step4Metrics);
+                
+                // Step 5: Display Results
+                const step5 = createStep('5. 🎨 Presenting Your Results', 'running');
+                document.getElementById('debug-steps').innerHTML += step5.stepHtml;
+                
+                let resultsHtml = '';
+                
+                if (tool === 'search_articles' && toolResult.results) {
+                    resultsHtml = `
+                        <div class="success">✅ Your search results are ready!</div>
+                        <div class="info" style="margin: 15px 0;">
+                            <strong>What you're seeing:</strong><br>
+                            Below are the medical articles that best match your question "${toolResult.query.text}". Each article has been scored for relevance - higher percentages mean the article is more closely related to what you're looking for.
+                            <br><br>
+                            <strong>How to interpret the results:</strong><br>
+                            • <strong>Relevance Score:</strong> How well the article matches your question (higher = better match)<br>
+                            • <strong>DOI:</strong> Digital Object Identifier - a unique ID for the article<br>
+                            • <strong>Abstract:</strong> A summary of the article's key findings<br>
+                            • <strong>Year:</strong> When the research was published (newer is often more current)
+                        </div>
+                        <h4 style="color: #e74c3c; margin: 20px 0 15px 0;">📚 Top ${Math.min(3, toolResult.results.length)} Most Relevant Articles:</h4>
+                    `;
+                    
+                    toolResult.results.slice(0, 3).forEach((article, index) => {
+                        const relevanceColor = article.relevance_score > 80 ? '#27ae60' : 
+                                             article.relevance_score > 60 ? '#f39c12' : '#e74c3c';
+                        resultsHtml += `
+                            <div class="code-block" style="border-left: 4px solid ${relevanceColor};">
+                                <strong>${index + 1}. ${article.title}</strong><br>
+                                <div style="margin: 8px 0; padding: 8px; background: #1a252f; border-radius: 4px;">
+                                    <strong>Relevance:</strong> <span style="color: ${relevanceColor}; font-weight: bold;">${article.relevance_score}%</span> | 
+                                    <strong>Year:</strong> ${article.year} | 
+                                    <strong>Source:</strong> ${article.source?.replace('nejm-api-', '').toUpperCase() || 'NEJM'}<br>
+                                    <strong>DOI:</strong> ${article.doi}
+                                </div>
+                                <strong>Abstract:</strong> ${article.abstract.substring(0, 200)}${article.abstract.length > 200 ? '...' : ''}
+                            </div>
+                        `;
+                    });
+                    
+                } else if (tool === 'ask_research_question' && toolResult.answer) {
+                    resultsHtml = `
+                        <div class="success">✅ Your AI research answer is ready!</div>
+                        <div class="info" style="margin: 15px 0;">
+                            <strong>What you're seeing:</strong><br>
+                            Below is an AI-generated answer to your question "${toolResult.question}". This answer was created by Claude 3.5 Sonnet after analyzing ${toolResult.total_sources} relevant medical articles from our database.
+                            <br><br>
+                            <strong>Why this answer is trustworthy:</strong><br>
+                            • Based on real medical literature, not just AI training data<br>
+                            • Uses current research from reputable medical journals<br>
+                            • Synthesizes information from multiple sources<br>
+                            • Provides evidence-based insights
+                        </div>
+                        <h4 style="color: #e74c3c; margin: 20px 0 15px 0;">🤖 AI Research Answer (Based on ${toolResult.total_sources} Medical Articles):</h4>
+                        <div class="code-block" style="background: #1a2332; border-left: 4px solid #27ae60; white-space: pre-wrap; line-height: 1.6;">
+${toolResult.answer.substring(0, 500)}${toolResult.answer.length > 500 ? '...\n\n[Answer continues - see full response in main interface]' : ''}
+                        </div>
+                    `;
+                    
+                } else {
+                    resultsHtml = `
+                        <div class="success">✅ Results processed successfully</div>
+                        <div class="info" style="margin: 15px 0;">
+                            <strong>What you're seeing:</strong><br>
+                            The raw data returned by the MCP server. This shows the complete response structure and all available information.
+                        </div>
+                        ${formatJSON(toolResult)}
+                    `;
+                }
+                
+                updateStep(step5.stepId, 'success', resultsHtml, {
+                    'Total Processing Time': `${Date.now() - startTime}ms`,
+                    'Status': 'Complete'
+                });
+                
+            } catch (error) {
+                console.error('Debug error:', error);
+                
+                // Update current step with error
+                if (debugSteps.length > 0) {
+                    const currentStep = debugSteps[debugSteps.length - 1];
+                    updateStep(currentStep.id, 'error', `
+                        <div class="error">
+                            <strong>Error occurred:</strong><br>
+                            ${error.message}
+                        </div>
+                    `);
+                }
+            }
+        }
+        
+        // Debug embeddings comparison
+        async function debugEmbeddings() {
+            const text1 = document.getElementById('text1').value.trim();
+            const text2 = document.getElementById('text2').value.trim();
+            
+            if (!text1 || !text2) {
+                alert('Please enter both texts to compare');
+                return;
+            }
+            
+            document.getElementById('embeddings-steps').innerHTML = '';
+            
+            try {
+                const step1 = createStep('1. Generate Embeddings', 'running');
+                document.getElementById('embeddings-steps').innerHTML += step1.stepHtml;
+                
+                const response = await fetch(MCP_API_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        method: 'tools/call',
+                        params: {
+                            name: 'compare_embeddings',
+                            arguments: { text1, text2 }
+                        }
+                    })
+                });
+                
+                const result = await response.json();
+                const comparison = JSON.parse(result.content[0].text);
+                
+                updateStep(step1.stepId, 'success', `
+                    <div class="success">Embeddings generated and compared</div>
+                    <div class="code-block">
+                        Text 1: "${comparison.text1.content}"<br>
+                        Text 2: "${comparison.text2.content}"<br>
+                        Similarity: ${comparison.similarity_percent}%
+                    </div>
+                    ${formatVector(comparison.text1.preview, 'Text 1 Vector Preview')}
+                    ${formatVector(comparison.text2.preview, 'Text 2 Vector Preview')}
+                `, {
+                    'Similarity Score': `${comparison.similarity_percent}%`,
+                    'Text 1 Norm': comparison.text1.norm.toFixed(4),
+                    'Text 2 Norm': comparison.text2.norm.toFixed(4)
+                });
+                
+            } catch (error) {
+                console.error('Embeddings debug error:', error);
+            }
+        }
+        
+        // Debug ingestion process (simulated)
+        function debugIngestion() {
+            document.getElementById('ingestion-steps').innerHTML = '';
+            
+            const steps = [
+                'Fetch Article from NEJM API',
+                'Extract Metadata (Title, DOI, Authors)',
+                'Clean and Process Content',
+                'Generate Vector Embedding',
+                'Store in OpenSearch Index',
+                'Update Database Statistics'
+            ];
+            
+            steps.forEach((stepTitle, index) => {
+                setTimeout(() => {
+                    const step = createStep(`${index + 1}. ${stepTitle}`, 'running');
+                    document.getElementById('ingestion-steps').innerHTML += step.stepHtml;
+                    
+                    setTimeout(() => {
+                        updateStep(step.stepId, 'success', `
+                            <div class="success">${stepTitle} completed successfully</div>
+                            <div class="code-block">
+                                Simulated processing step for demonstration purposes.<br>
+                                In real ingestion, this would involve actual API calls and data processing.
+                            </div>
+                        `, {
+                            'Step': `${index + 1}/6`,
+                            'Status': 'Simulated'
+                        });
+                    }, 1000);
+                }, index * 1500);
+            });
+        }
+    </script>
+</body>
+</html>

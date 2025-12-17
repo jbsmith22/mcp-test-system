@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple MCP Test</title>
+</head>
+<body>
+    <h1>Simple MCP Test</h1>
+    <button onclick="testStats()">Test Database Stats</button>
+    <div id="result"></div>
+    
+    <script>
+        async function testStats() {
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = 'Testing...';
+            
+            try {
+                const response = await fetch('https://lwi6jeeczi.execute-api.us-east-1.amazonaws.com/prod/research', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        method: 'tools/call',
+                        params: {
+                            name: 'get_database_stats',
+                            arguments: {}
+                        }
+                    })
+                });
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: Request failed`);
+                }
+                
+                const result = await response.json();
+                const statsData = JSON.parse(result.content[0].text);
+                
+                resultDiv.innerHTML = `
+                    <h2>✅ Success!</h2>
+                    <p>Total Articles: ${statsData.total_articles}</p>
+                    <p>Database Size: ${statsData.database_size_mb} MB</p>
+                    <p>Status: ${statsData.status}</p>
+                `;
+                
+            } catch (error) {
+                resultDiv.innerHTML = `<h2>❌ Error</h2><p>${error.message}</p>`;
+            }
+        }
+    </script>
+</body>
+</html>

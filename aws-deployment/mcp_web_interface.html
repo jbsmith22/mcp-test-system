@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEJM Research Assistant - MCP Edition</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 300;
+        }
+        
+        .header p {
+            opacity: 0.9;
+            font-size: 1.1em;
+        }
+        
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 0;
+            min-height: 600px;
+        }
+        
+        .search-panel {
+            padding: 30px;
+        }
+        
+        .sidebar {
+            background: #f8f9fa;
+            padding: 30px;
+            border-left: 1px solid #e9ecef;
+            overflow-y: auto;
+            max-height: 800px;
+        }
+        
+        .search-form {
+            margin-bottom: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        
+        input[type="text"], textarea, select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        
+        input[type="text"]:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        
+        .btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+        }
+        
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .btn-secondary {
+            background: linear-gradient(135deg, #95a5a6 0%, #7f8c8d 100%);
+        }
+        
+        .btn-success {
+            background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
+        }
+        
+        .btn-warning {
+            background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);
+        }
+        
+        .results {
+            margin-top: 30px;
+        }
+        
+        .result-item {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .result-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .result-type {
+            background: #667eea;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        .result-content {
+            line-height: 1.6;
+            color: #2c3e50;
+        }
+        
+        .sources {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #e9ecef;
+        }
+        
+        .source-item {
+            background: white;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 10px;
+            border: 1px solid #e9ecef;
+        }
+        
+        .source-title {
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+        
+        .source-meta {
+            font-size: 12px;
+            color: #7f8c8d;
+            margin-bottom: 8px;
+        }
+        
+        .source-abstract {
+            font-size: 14px;
+            line-height: 1.5;
+            color: #34495e;
+        }
+        
+        .vector-info {
+            background: #e8f4fd;
+            border: 1px solid #bee5eb;
+            border-radius: 5px;
+            padding: 10px;
+            margin-top: 10px;
+            font-size: 12px;
+        }
+        
+        .loading {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            color: #7f8c8d;
+        }
+        
+        .spinner {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #e9ecef;
+            border-top: 2px solid #667eea;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-right: 10px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .error {
+            background: #fff5f5;
+            color: #e53e3e;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #fed7d7;
+        }
+        
+        .stats-card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .stats-card h3 {
+            font-size: 16px;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .stat-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid #f1f3f4;
+        }
+        
+        .stat-item:last-child {
+            border-bottom: none;
+        }
+        
+        .stat-value {
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        
+        .health-indicator {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+        
+        .health-good { background: #27ae60; }
+        .health-warning { background: #f39c12; }
+        .health-error { background: #e74c3c; }
+        
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🏥 NEJM Research Assistant</h1>
+            <p>MCP-powered medical literature search and analysis</p>
+        </div>
+        
+        <div class="main-content">
+            <div class="search-panel">
+                <div class="search-form">
+                    <div class="form-group">
+                        <label for="query">Research Question</label>
+                        <textarea id="query" placeholder="Enter your medical research question here...">What are the latest treatments for diabetes?</textarea>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="max-results">Max Results</label>
+                            <select id="max-results">
+                                <option value="5">5 articles</option>
+                                <option value="10" selected>10 articles</option>
+                                <option value="20">20 articles</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="search-mode">Search Mode</label>
+                            <select id="search-mode">
+                                <option value="search" selected>Article Search</option>
+                                <option value="research">AI Research Q&A</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <button class="btn" onclick="performSearch()" id="search-btn">🔍 Search Literature</button>
+                </div>
+                
+                <div id="results"></div>
+            </div>
+            
+            <div class="sidebar">
+                <div class="stats-card">
+                    <h3>📊 Database Status</h3>
+                    <div id="db-stats">
+                        <div class="loading">
+                            <div class="spinner"></div>
+                            Loading stats...
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="stats-card">
+                    <h3>🔧 MCP Tools</h3>
+                    <button class="btn btn-secondary" onclick="testTool('get_database_stats')" style="width: 100%; margin-bottom: 10px;">📊 Get Stats</button>
+                    <button class="btn btn-secondary" onclick="testTool('search_articles')" style="width: 100%; margin-bottom: 10px;">🔍 Test Search</button>
+                    <button class="btn btn-secondary" onclick="testTool('compare_embeddings')" style="width: 100%; margin-bottom: 10px;">🧮 Compare Vectors</button>
+                    <a href="mcp_debug_page.html" class="btn btn-secondary" style="width: 100%; text-decoration: none; display: block; text-align: center;">🔍 Debug Mode</a>
+                </div>
+                
+                <div class="stats-card">
+                    <h3>📥 Article Management</h3>
+                    
+                    <!-- Ingestion Controls -->
+                    <div style="margin-bottom: 15px;">
+                        <label for="journal-select" style="font-size: 14px; margin-bottom: 5px;">Journal Source:</label>
+                        <select id="journal-select" style="width: 100%; padding: 8px; margin-bottom: 10px; font-size: 14px;">
+                            <option value="nejm">NEJM (Main Journal)</option>
+                            <option value="nejm-ai" selected>NEJM AI</option>
+                            <option value="catalyst">NEJM Catalyst</option>
+                            <option value="evidence">NEJM Evidence</option>
+                            <option value="clinician">NEJM for Clinicians</option>
+                        </select>
+                        
+                        <label for="article-count" style="font-size: 14px; margin-bottom: 5px;">Number of Articles:</label>
+                        <select id="article-count" style="width: 100%; padding: 8px; margin-bottom: 10px; font-size: 14px;">
+                            <option value="1">1 article</option>
+                            <option value="2">2 articles</option>
+                            <option value="3">3 articles</option>
+                            <option value="5" selected>5 articles</option>
+                            <option value="10">10 articles</option>
+                            <option value="15">15 articles</option>
+                            <option value="20">20 articles</option>
+                        </select>
+                    </div>
+                    
+                    <button class="btn btn-success" onclick="ingestArticles()" style="width: 100%; margin-bottom: 10px;" id="ingest-btn">📥 Ingest New Articles</button>
+                    <button class="btn btn-warning" onclick="vectorizeArticles()" style="width: 100%; margin-bottom: 10px;" id="vectorize-btn">🔢 Vectorize Articles</button>
+                    <div style="font-size: 12px; color: #7f8c8d; margin-top: 10px;">
+                        <strong>Ingest:</strong> Add new articles from selected journal<br>
+                        <strong>Vectorize:</strong> Add embeddings to articles without vectors
+                    </div>
+                </div>
+                
+                <div class="stats-card">
+                    <h3>🔒 System Health</h3>
+                    <div id="health-status">
+                        <div class="loading">
+                            <div class="spinner"></div>
+                            Checking health...
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // MCP API Configuration
+        const MCP_API_URL = 'https://lwi6jeeczi.execute-api.us-east-1.amazonaws.com/prod/research';
+        
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            loadDatabaseStats();
+            checkSystemHealth();
+            
+            // Auto-refresh every 60 seconds
+            setInterval(loadDatabaseStats, 60000);
+        });
+        
+        // Call MCP tool via HTTP API
+        async function callMCPTool(toolName, arguments = {}) {
+            try {
+                const response = await fetch(MCP_API_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        method: 'tools/call',
+                        params: {
+                            name: toolName,
+                            arguments: arguments
+                        }
+                    })
+                });
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: Request failed`);
+                }
+                
+                const result = await response.json();
+                return result;
+                
+            } catch (error) {
+                console.error(`MCP Tool ${toolName} error:`, error);
+                throw error;
+            }
+        }
+        
+        // Load database statistics using MCP
+        async function loadDatabaseStats() {
+            const statsDiv = document.getElementById('db-stats');
+            statsDiv.innerHTML = '<div class="loading"><div class="spinner"></div>Loading stats...</div>';
+            
+            try {
+                console.log('Loading database stats...');
+                const result = await callMCPTool('get_database_stats');
+                console.log('Stats result:', result);
+                
+                if (result.content && result.content[0] && result.content[0].text) {
+                    const statsData = JSON.parse(result.content[0].text);
+                    console.log('Parsed stats data:', statsData);
+                    
+                    // Build source breakdown HTML
+                    let sourceHtml = '';
+                    if (statsData.source_breakdown && Object.keys(statsData.source_breakdown).length > 0) {
+                        sourceHtml = '<div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #e9ecef;"><strong>By Source:</strong></div>';
+                        for (const [source, count] of Object.entries(statsData.source_breakdown)) {
+                            const cleanSource = source.replace('nejm-api-', '').replace('nejm-api', 'NEJM');
+                            sourceHtml += `
+                                <div class="stat-item">
+                                    <span>${cleanSource}</span>
+                                    <span class="stat-value">${count} articles</span>
+                                </div>
+                            `;
+                        }
+                    }
+                    
+                    const html = `
+                        <div class="stat-item">
+                            <span>Total Articles</span>
+                            <span class="stat-value" style="color: #27ae60;">${statsData.total_articles || 'N/A'}</span>
+                        </div>
+                        <div class="stat-item">
+                            <span>Database Size</span>
+                            <span class="stat-value">${statsData.database_size_mb || 'N/A'} MB</span>
+                        </div>
+                        <div class="stat-item">
+                            <span>Vector Dimensions</span>
+                            <span class="stat-value">${statsData.vector_dimensions || 'N/A'}</span>
+                        </div>
+                        <div class="stat-item">
+                            <span>Search Engine</span>
+                            <span class="stat-value">OpenSearch</span>
+                        </div>
+                        <div class="stat-item">
+                            <span>AI Model</span>
+                            <span class="stat-value">Claude 3.5</span>
+                        </div>
+                        <div class="stat-item">
+                            <span>Status</span>
+                            <span class="stat-value" style="color: #27ae60;">✅ ${statsData.status || 'Active'}</span>
+                        </div>
+                        ${sourceHtml}
+                    `;
+                    
+                    statsDiv.innerHTML = html;
+                    console.log('Stats updated successfully');
+                } else {
+                    throw new Error('Invalid stats response format');
+                }
+                
+            } catch (error) {
+                console.error('Failed to load database stats:', error);
+                statsDiv.innerHTML = `
+                    <div class="stat-item">
+                        <span>Status</span>
+                        <span class="stat-value" style="color: #e74c3c;">❌ Error</span>
+                    </div>
+                    <div style="font-size: 11px; color: #7f8c8d; margin-top: 10px;">
+                        Error: ${error.message}<br>
+                        <button onclick="loadDatabaseStats()" style="margin-top: 5px; padding: 5px 10px; background: #667eea; color: white; border: none; border-radius: 3px; cursor: pointer;">Retry</button>
+                        <button onclick="window.location.reload()" style="margin-top: 5px; margin-left: 5px; padding: 5px 10px; background: #95a5a6; color: white; border: none; border-radius: 3px; cursor: pointer;">Refresh Page</button>
+                    </div>
+                `;
+            }
+        }
+        
+        // Check system health
+        async function checkSystemHealth() {
+            const healthDiv = document.getElementById('health-status');
+            
+            try {
+                // Test MCP connectivity
+                const result = await callMCPTool('get_database_stats');
+                const isHealthy = result && result.content;
+                
+                const html = `
+                    <div class="stat-item">
+                        <span>MCP Server</span>
+                        <span class="stat-value">
+                            <span class="health-indicator ${isHealthy ? 'health-good' : 'health-error'}"></span>
+                            ${isHealthy ? 'Online' : 'Offline'}
+                        </span>
+                    </div>
+                    <div class="stat-item">
+                        <span>OpenSearch</span>
+                        <span class="stat-value">
+                            <span class="health-indicator ${isHealthy ? 'health-good' : 'health-error'}"></span>
+                            ${isHealthy ? 'Connected' : 'Disconnected'}
+                        </span>
+                    </div>
+                    <div class="stat-item">
+                        <span>AI Model</span>
+                        <span class="stat-value">
+                            <span class="health-indicator ${isHealthy ? 'health-good' : 'health-error'}"></span>
+                            ${isHealthy ? 'Available' : 'Unavailable'}
+                        </span>
+                    </div>
+                `;
+                
+                healthDiv.innerHTML = html;
+                
+            } catch (error) {
+                healthDiv.innerHTML = `<div class="error">❌ Health check failed: ${error.message}</div>`;
+            }
+        }
+        
+        // Test individual MCP tools
+        async function testTool(toolName) {
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML = `<div class="loading"><div class="spinner"></div>Testing ${toolName}...</div>`;
+            
+            try {
+                let result;
+                
+                switch (toolName) {
+                    case 'get_database_stats':
+                        result = await callMCPTool('get_database_stats');
+                        break;
+                    case 'search_articles':
+                        result = await callMCPTool('search_articles', {
+                            query: 'diabetes treatment',
+                            max_results: 3
+                        });
+                        break;
+                    case 'compare_embeddings':
+                        result = await callMCPTool('compare_embeddings', {
+                            text1: 'diabetes treatment',
+                            text2: 'glucose management'
+                        });
+                        break;
+                    default:
+                        throw new Error(`Unknown tool: ${toolName}`);
+                }
+                
+                const html = `
+                    <div class="result-item">
+                        <div class="result-header">
+                            <span class="result-type">MCP Tool Test</span>
+                            <span style="color: #27ae60;">✅ ${toolName}</span>
+                        </div>
+                        <div class="result-content">
+                            <pre style="background: #f8f9fa; padding: 10px; border-radius: 5px; overflow-x: auto; font-size: 12px;">${JSON.stringify(result, null, 2)}</pre>
+                        </div>
+                    </div>
+                `;
+                
+                resultsDiv.innerHTML = html;
+                
+            } catch (error) {
+                resultsDiv.innerHTML = `
+                    <div class="result-item">
+                        <div class="result-header">
+                            <span class="result-type">MCP Tool Test</span>
+                            <span style="color: #e74c3c;">❌ Failed</span>
+                        </div>
+                        <div class="result-content">
+                            <strong>Error testing ${toolName}:</strong><br>
+                            ${error.message}
+                        </div>
+                    </div>
+                `;
+            }
+        }
+        
+        // Perform search using MCP tools
+        async function performSearch() {
+            const query = document.getElementById('query').value.trim();
+            if (!query) {
+                alert('Please enter a research question');
+                return;
+            }
+            
+            const maxResults = parseInt(document.getElementById('max-results').value);
+            const searchMode = document.getElementById('search-mode').value;
+            const searchBtn = document.getElementById('search-btn');
+            
+            // Update UI
+            searchBtn.disabled = true;
+            searchBtn.textContent = '🔍 Searching...';
+            
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML = '<div class="loading"><div class="spinner"></div>Searching articles...</div>';
+            
+            try {
+                let result;
+                
+                if (searchMode === 'research') {
+                    // Use ask_research_question tool
+                    result = await callMCPTool('ask_research_question', {
+                        question: query,
+                        max_sources: maxResults
+                    });
+                } else {
+                    // Use search_articles tool
+                    result = await callMCPTool('search_articles', {
+                        query: query,
+                        max_results: maxResults
+                    });
+                }
+                
+                if (result && result.content && result.content[0]) {
+                    const responseData = JSON.parse(result.content[0].text);
+                    displaySearchResults(responseData, searchMode);
+                } else {
+                    throw new Error('Invalid response format from MCP server');
+                }
+                
+            } catch (error) {
+                console.error('Search error:', error);
+                resultsDiv.innerHTML = `<div class="error">❌ Search failed<br>Error: ${error.message}</div>`;
+            } finally {
+                searchBtn.disabled = false;
+                searchBtn.textContent = '🔍 Search Literature';
+            }
+        }
+        
+        // Display search results
+        function displaySearchResults(data, searchMode) {
+            const resultsDiv = document.getElementById('results');
+            let html = '';
+            
+            if (searchMode === 'research' && data.answer) {
+                // Display AI research answer
+                html += `
+                    <div class="result-item">
+                        <div class="result-header">
+                            <span class="result-type">AI Research Answer</span>
+                            <span style="font-size: 12px; color: #7f8c8d;">Based on ${data.sources ? data.sources.length : 0} articles</span>
+                        </div>
+                        <div class="result-content">${data.answer}</div>
+                    </div>
+                `;
+            }
+            
+            if (data.articles || data.sources) {
+                const articles = data.articles || data.sources;
+                html += '<div class="sources"><h4>📚 Source Articles</h4>';
+                
+                articles.forEach((article, index) => {
+                    html += `
+                        <div class="source-item">
+                            <div class="source-title">${index + 1}. ${article.title}</div>
+                            <div class="source-meta">
+                                ${article.authors ? `Authors: ${article.authors} | ` : ''}
+                                ${article.year ? `Year: ${article.year} | ` : ''}
+                                ${article.journal ? `Journal: ${article.journal} | ` : ''}
+                                DOI: ${article.doi || 'N/A'}
+                                ${article.score ? ` | Relevance: ${article.score.toFixed(3)}` : ''}
+                            </div>
+                            <div class="source-abstract">${article.abstract ? article.abstract.substring(0, 400) + '...' : 'No abstract available'}</div>
+                            ${article.vector_info ? `
+                                <div class="vector-info">
+                                    <strong>Vector Info:</strong> ${article.vector_info.query_embedding_norm ? `Query norm: ${article.vector_info.query_embedding_norm.toFixed(3)} | ` : ''}
+                                    ${article.vector_info.document_embedding_preview ? `Doc preview: [${article.vector_info.document_embedding_preview.slice(0, 3).map(v => v.toFixed(3)).join(', ')}...]` : ''}
+                                </div>
+                            ` : ''}
+                        </div>
+                    `;
+                });
+                
+                html += '</div>';
+            } else {
+                html += '<div class="result-content">No articles found for this query. Try different keywords.</div>';
+            }
+            
+            resultsDiv.innerHTML = html;
+        }
+        
+        // Ingest new articles
+        async function ingestArticles() {
+            const ingestBtn = document.getElementById('ingest-btn');
+            const resultsDiv = document.getElementById('results');
+            
+            // Get selected values
+            const selectedJournal = document.getElementById('journal-select').value;
+            const selectedCount = parseInt(document.getElementById('article-count').value);
+            
+            // Confirm action
+            if (!confirm(`This will ingest ${selectedCount} articles from ${selectedJournal.toUpperCase()}. Continue?`)) {
+                return;
+            }
+            
+            // Update UI
+            ingestBtn.disabled = true;
+            ingestBtn.textContent = '📥 Ingesting...';
+            resultsDiv.innerHTML = `<div class="loading"><div class="spinner"></div>Ingesting ${selectedCount} articles from ${selectedJournal.toUpperCase()}...</div>`;
+            
+            try {
+                const result = await callMCPTool('ingest_articles', {
+                    source: selectedJournal,
+                    count: selectedCount
+                });
+                
+                if (result && result.content && result.content[0]) {
+                    const responseData = JSON.parse(result.content[0].text);
+                    
+                    let html = `
+                        <div class="result-item">
+                            <div class="result-header">
+                                <span class="result-type">Article Ingestion</span>
+                                <span style="color: #27ae60;">✅ Completed</span>
+                            </div>
+                            <div class="result-content">
+                                <strong>Source:</strong> ${responseData.source}<br>
+                                <strong>Requested:</strong> ${responseData.requested_count} articles<br>
+                                <strong>Successfully Ingested:</strong> ${responseData.ingested_count} articles<br>
+                                <strong>Status:</strong> ${responseData.status}
+                            </div>
+                    `;
+                    
+                    if (responseData.articles && responseData.articles.length > 0) {
+                        html += '<div class="sources"><h4>📚 Newly Ingested Articles</h4>';
+                        responseData.articles.forEach((article, index) => {
+                            html += `
+                                <div class="source-item">
+                                    <div class="source-title">${index + 1}. ${article.title}</div>
+                                    <div class="source-meta">
+                                        DOI: ${article.doi} | 
+                                        Authors: ${article.authors} | 
+                                        Vector Dimensions: ${article.vector_dimensions} | 
+                                        Status: ${article.ingestion_status}
+                                    </div>
+                                </div>
+                            `;
+                        });
+                        html += '</div>';
+                    }
+                    
+                    html += '</div>';
+                    resultsDiv.innerHTML = html;
+                    
+                    // Refresh database stats
+                    loadDatabaseStats();
+                    
+                } else {
+                    throw new Error('Invalid response format from MCP server');
+                }
+                
+            } catch (error) {
+                console.error('Ingestion error:', error);
+                resultsDiv.innerHTML = `<div class="error">❌ Ingestion failed<br>Error: ${error.message}</div>`;
+            } finally {
+                ingestBtn.disabled = false;
+                ingestBtn.textContent = '📥 Ingest New Articles';
+            }
+        }
+        
+        // Vectorize existing articles
+        async function vectorizeArticles() {
+            const vectorizeBtn = document.getElementById('vectorize-btn');
+            const resultsDiv = document.getElementById('results');
+            
+            // Confirm action
+            if (!confirm('This will add vector embeddings to articles that don\'t have them. Continue?')) {
+                return;
+            }
+            
+            // Update UI
+            vectorizeBtn.disabled = true;
+            vectorizeBtn.textContent = '🔢 Vectorizing...';
+            resultsDiv.innerHTML = '<div class="loading"><div class="spinner"></div>Vectorizing articles...</div>';
+            
+            try {
+                const result = await callMCPTool('vectorize_existing_articles', {
+                    limit: 20  // Process 20 articles at a time
+                });
+                
+                if (result && result.content && result.content[0]) {
+                    const responseData = JSON.parse(result.content[0].text);
+                    
+                    const html = `
+                        <div class="result-item">
+                            <div class="result-header">
+                                <span class="result-type">Article Vectorization</span>
+                                <span style="color: #27ae60;">✅ Completed</span>
+                            </div>
+                            <div class="result-content">
+                                <strong>Total Processed:</strong> ${responseData.total_processed} articles<br>
+                                <strong>Successfully Vectorized:</strong> ${responseData.vectorized_count} articles<br>
+                                <strong>Failed:</strong> ${responseData.failed_count || 0} articles<br>
+                                <strong>Message:</strong> ${responseData.message}
+                            </div>
+                        </div>
+                    `;
+                    
+                    resultsDiv.innerHTML = html;
+                    
+                    // Refresh database stats
+                    loadDatabaseStats();
+                    
+                } else {
+                    throw new Error('Invalid response format from MCP server');
+                }
+                
+            } catch (error) {
+                console.error('Vectorization error:', error);
+                resultsDiv.innerHTML = `<div class="error">❌ Vectorization failed<br>Error: ${error.message}</div>`;
+            } finally {
+                vectorizeBtn.disabled = false;
+                vectorizeBtn.textContent = '🔢 Vectorize Articles';
+            }
+        }
+    </script>
+</body>
+</html>

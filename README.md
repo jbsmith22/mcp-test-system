@@ -5,11 +5,13 @@ A comprehensive AI-powered medical literature search and analysis system that in
 ## 🎯 Current Status (December 2025)
 
 ### AWS Cloud Deployment ✅ FULLY OPERATIONAL
-- **🌐 Live Website**: http://nejm-research-web-interface.s3-website-us-east-1.amazonaws.com
-- **📊 Database**: 297 NEJM articles with full-text search and AI embeddings
+- **🌐 Live Website**: http://nejm-mcp-research-web.s3-website-us-east-1.amazonaws.com
+- **🔗 MCP API**: https://lwi6jeeczi.execute-api.us-east-1.amazonaws.com/prod/research
+- **📊 Database**: 436+ NEJM articles with full-content vectorization and AI embeddings
 - **🔍 AI Search**: Claude 3.5 Sonnet integration for intelligent literature analysis
-- **📥 Smart Ingestion**: Automated article ingestion with pagination back to 1812
-- **💰 Cost Monitoring**: ~$52/month estimated AWS costs with real-time tracking
+- **📥 Real NEJM API Integration**: Live ingestion with smart offset strategy and duplicate prevention
+- **🎛️ User Controls**: Journal selection and article count controls in web interface
+- **💰 Cost Monitoring**: Optimized AWS costs with efficient resource usage
 
 ### On-Premises Deployment ✅ AVAILABLE
 - **🏠 Local Setup**: Complete Docker-based stack with Qdrant + Ollama
@@ -26,11 +28,13 @@ A comprehensive AI-powered medical literature search and analysis system that in
 - **Real-time Analysis**: Instant AI-generated summaries with evidence-based responses
 
 ### Advanced Ingestion System
-- **Smart Pagination**: Automatically searches through ALL available articles until target count reached
-- **Historical Coverage**: Can ingest articles dating back to 1812 (50,000+ article capacity)
-- **Duplicate Prevention**: Intelligent filtering prevents re-ingestion of existing articles
-- **Live Progress**: Real-time display of article titles and metadata during ingestion
-- **Multi-Source Support**: NEJM Journal, Evidence, Catalyst, and AI publications
+- **Real NEJM API Integration**: Direct connection to NEJM's production API with full authentication
+- **Smart Offset Strategy**: Calculates database offset to find new articles efficiently
+- **Guaranteed Article Count**: Searches until requested number of unique articles found
+- **Multi-Source Support**: NEJM Main, NEJM AI, Catalyst, Evidence, Clinician journals
+- **Full Content Processing**: Complete article text (up to 8,000 chars) with JATS XML parsing
+- **Duplicate Prevention**: DOI-based filtering prevents re-ingestion of existing articles
+- **User-Controlled Parameters**: Web interface dropdowns for journal selection and article count
 
 ### Comprehensive Web Interface
 - **📊 Live Statistics**: Real-time database metrics with source breakdowns
@@ -41,12 +45,13 @@ A comprehensive AI-powered medical literature search and analysis system that in
 - **📚 Quick Actions**: One-click stats refresh and API testing
 
 ### Enterprise AWS Architecture
-- **OpenSearch Domain**: Scalable search with vector embeddings (297+ articles indexed)
-- **Lambda Functions**: Serverless API processing with automatic scaling
-- **API Gateway**: RESTful endpoints with CORS and security policies
-- **S3 + CloudFront**: Global CDN for fast website delivery
-- **Bedrock Integration**: Amazon Titan embeddings and Claude 3.5 Sonnet
-- **Secrets Manager**: Secure NEJM API credential storage
+- **OpenSearch Domain**: Scalable search with vector embeddings (436+ articles indexed)
+- **Lambda Functions**: MCP-compatible serverless API with real NEJM integration
+- **API Gateway**: RESTful endpoints with CORS and IP-based security
+- **S3 Static Hosting**: Fast website delivery with user-friendly controls
+- **Bedrock Integration**: Amazon Titan embeddings (1536 dims) and Claude 3.5 Sonnet
+- **Secrets Manager**: Secure NEJM API credential storage and rotation
+- **MCP Protocol**: Model Context Protocol compatibility for AI assistant integration
 
 ### On-Premises Architecture
 - **Qdrant Vector Database**: Local vector storage with semantic search capabilities
